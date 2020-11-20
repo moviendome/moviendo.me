@@ -17,9 +17,18 @@
           </div>
           <h1><%= current_article.title %></h1>
           <%= yield %>
+
+          <% if current_article.data.ig.present? %>
+            <p class="has-text-centered mt-6">
+              <a href="<%= current_article.data.ig %>">
+                <%= image_tag('icons/instagram.svg', width: '30px') %>
+              </a>
+            </p>
+          <% end %>
         </div>
       </div>
     </section>
-    <hr />
+
+    <%= partial "footer" %>
   </body>
 </html>
