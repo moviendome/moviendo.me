@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <%= partial "head" %>
+  </head>
+  <body>
+    <%= partial "header" %>
+
+    <section class="section">
+      <div class="container">
+        <div class="content is-medium">
+          <h6 class="subtitle is-6 is-uppercase"><time><%= current_article.date.strftime('%b %e, %Y') %></time></h6>
+          <div class="tags">
+            <% current_article.tags.each do |tag| %>
+              <span class="tag is-light is-uppercase"><%= tag %></span>
+            <% end %>
+          </div>
+          <h1><%= current_article.title %></h1>
+          <%= yield %>
+        </div>
+      </div>
+    </section>
+    <hr />
+  </body>
+</html>

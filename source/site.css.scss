@@ -1,0 +1,56 @@
+@charset 'utf-8';
+
+$link: #000;
+
+@import 'stylesheets/utilities/_all';
+@import 'stylesheets/base/_all';
+@import 'stylesheets/elements/_all';
+// @import 'stylesheets/form/_all';
+// @import 'stylesheets/components/_all';
+@import 'stylesheets/grid/_all';
+@import 'stylesheets/helpers/_all';
+@import 'stylesheets/layout/_all';
+
+body {
+  section {
+    &.hero {
+      margin-top: 80px;
+    }
+
+    .container {
+      .content {
+        blockquote,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .tags,
+        .notification,
+        p {
+          max-width: 600px;
+          margin: 20px auto;
+        }
+
+        .highlight,
+        .intro {
+          max-width: 800px;
+          margin: 20px auto;
+        }
+
+        .content-image {
+          max-width: 800px;
+          margin: 20px auto;
+          filter: grayscale(100%);
+
+          p {
+            max-width: 800px;
+            margin: 20px auto;
+            filter: grayscale(100%);
+          }
+        }
+      }
+    }
+  }
+}
