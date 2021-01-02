@@ -1,0 +1,26 @@
+---
+
+title: Bye 2020
+date: 2021-01-01 00:01 UTC
+tags: personal
+ig: https://www.instagram.com/moviendome/
+
+---
+
+<div class="content-image" markdown="1">
+  ![](bye-2020/bkk-1.jpg)
+</div>
+
+At the beginning of 2020 I moved to Bangkok (Thailand) to join [Omise]() as API Software Engineer and I couldn't imagine the big change this year was going to bring to our lives, nobody could do it.
+
+So to start from zero in a new city and a new job I had to add months locked at home and travel nowhere even to visit family for the first time in the last 10 years... but looking back, it has been good year for me.
+
+After June, I've had the opportunity to discover Bangkok in depth because situation has been pretty safe here, make new connections, meet new friends while I developed my skills working for one of the most promissing Startups in Thailand that was able to [raise $80 Million]() in the middle of this global situation.
+
+<div class="content-image" markdown="1">
+  ![](bye-2020/bkk-2.jpg)
+</div>
+
+Now, I want to focus in some of the goals that I set for this year like publish my first mobile app and publish the book that I've been writing about the process, because although I worked the last few years building APIs with Ruby on Rails I've found very funny and easy to build Cross-Platform apps with React Native.
+
+Also, start blogging again about tech, programming or traveling with the idea of share notes that I use to save in [Notion](https://www.notion.so/) and that maybe are useful for someone else.

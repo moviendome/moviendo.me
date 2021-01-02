@@ -28,9 +28,14 @@ body {
         h6,
         .tags,
         .notification,
-        p {
+        p,
+        ul {
           max-width: 600px;
           margin: 20px auto;
+        }
+
+        ul {
+          margin-bottom: 40px;
         }
 
         .highlight,
@@ -38,6 +43,8 @@ body {
           max-width: 800px;
           margin: 20px auto;
         }
+
+        .post { margin-bottom: 60px }
 
         .content-image {
           max-width: 800px;

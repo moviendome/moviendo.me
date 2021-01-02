@@ -2,7 +2,7 @@
 
 title: Speed Up Docker in Mac
 date: 2020-06-30 13:31 UTC
-tags: development, docker, performance
+tags: draft, development, docker, performance
 published: false
 
 ---

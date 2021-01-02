@@ -3,27 +3,32 @@ title: Minimalist, Software Engineer at Omise, Based in Bangkok
 ---
 
 <% blog.articles.each do |article| %>
-  <h6 class="subtitle is-6 is-uppercase"><time><%= article.date.strftime('%b %e, %Y') %></time></h6>
+  <% unless article.tags.include?("draft") %>
+    <div class="post">
+      <h6 class="subtitle is-6 is-uppercase"><time><%= article.date.strftime('%b %e, %Y') %></time></h6>
 
-  <div class="tags">
-    <% article.tags.each do |tag| %>
-      <span class="tag is-light is-uppercase"><%= tag %></span>
-    <% end %>
-  </div>
+      <div class="tags">
+        <% article.tags.each do |tag| %>
+          <span class="tag is-light is-uppercase"><%= tag %></span>
+        <% end %>
+      </div>
 
-  <h1>
-    <a href="<%= article.url %>">
-      <%= article.title %>
-    </a>
-  </h1>
+      <h1>
+        <a href="<%= article.url %>">
+          <%= article.title %>
+        </a>
+      </h1>
 
-  <%= article.summary(5000) %>
-
-  <% if article.data.ig.present? %>
-    <p class="has-text-centered mt-6">
-      <a href="<%= article.data.ig %>">
-        <%= image_tag('icons/instagram.svg', width: '30px') %>
-      </a>
-    </p>
+      <%= article.summary(500) %>
+      <p class="has-text-centered">
+      <%= link_to "Read more", article, class: "button is-small is-uppercase" %>
+      </p>
+    </div>
   <% end %>
 <% end %>
+
+<p class="has-text-centered mt-6">
+  <a href="https://www.instagram.com/moviendome/">
+    <%= image_tag('icons/instagram.svg', width: '30px') %>
+  </a>
+</p>
