@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="profile" href="https://gmpg.org/xfn/11">
+<title>Create Cross-Platform Apps With React Native and Expo - moviendo.me</title>
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+/>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+<link href="/site-a9346c1c.css" rel="stylesheet" />
+
+  </head>
+  <body>
+    <div class="container mt-5">
+  <div class="content">
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+<a href="/">            <img src="/images/moviendome-c8e84528.png" width="80px" alt="" />
+</a>        </div>
+      </div>
+
+      <div class="level-right">
+        <p class="level-item is-size-7 has-text-centered">
+          Minimalist • Full-Stack Developer • Based in Bangkok
+        </p>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+    <section class="section">
+      <div class="container">
+        <div class="content is-medium">
+          <h6 class="subtitle is-6 is-uppercase"><time>Jan  3, 2021</time></h6>
+          <div class="tags">
+              <span class="tag is-light is-uppercase">development</span>
+              <span class="tag is-light is-uppercase">react native</span>
+              <span class="tag is-light is-uppercase">expo</span>
+              <span class="tag is-light is-uppercase">docker</span>
+          </div>
+          <h1>Create Cross-Platform Apps With React Native and Expo</h1>
+          <div class="content-image">
+  <p><img src="/create-cross-platform-apps-with-react-native-and-expo/expo-9032583c.jpg" alt="" /></p>
+</div>
+
+<p>I’ve spent most of my career working as <strong>Full Stack Developer</strong>, mainly building products in <strong>Ruby on Rails</strong>, but the last few years I’ve been working most of the time building <strong>APIs</strong>.</p>
+
+<p>Because sometimes I missed the Frontend and because I’m always trying to learn new things, I decided to give a try to learn how to build Mobile apps.</p>
+
+<p>In the past, I played with <em>RubyMotion</em> or <em>Swift</em> but a few years ago while I was having some time off at Indian Himalayas I started to follow a random <a href="http://reactnative.dev/">React Native</a> book to build <strong>Cross-Platform Apps</strong> (iOS &amp; Android) and I liked! It looked like a nice way to build apps but I started to feel a bit annoyed with the compiling process, dependencies… so at the end I wasn’t very engaged.</p>
+
+<div class="content-image">
+  <p><img src="/create-cross-platform-apps-with-react-native-and-expo/mc-leod-ganj-indian-himalaya-97dc6dd2.jpg" alt="" /></p>
+</div>
+
+<p>Years later, I was looking for technologies to build a client for an API and I found on my radar a really amazing way to build <strong>Cross-Platform Apps</strong> that let me avoid lot of headaches and start building directly in the Browser. Thanks to <a href="https://twitter.com/necolas">@necolas</a> and <a href="https://github.com/necolas/react-native-web">React Native for Web</a> that makes possible to run React Native components and APIs on the web using React Dom.</p>
+
+<p>So with the integration in <a href="https://expo.io/">Expo</a>, like they say in their website, you can <strong>build one project that runs natively on all your users’ devices</strong>.</p>
+
+<p><strong>This is the truly write once and runs everywhere!</strong></p>
+
+<p>This way let you build an app that later can run on:</p>
+
+<ul>
+  <li>Web (<a href="https://github.com/necolas/react-native-web">React Native for Web</a>)</li>
+  <li>iOS &amp; Android (<a href="http://reactnative.dev/">React Native</a>)</li>
+  <li>Mac, Windows &amp; Linux (<a href="https://github.com/necolas/react-native-web">React Native for Web</a> &amp; <a href="https://www.electronjs.org/">Electron</a>)</li>
+</ul>
+
+<p>Moreover, <a href="https://expo.io/">Expo</a> has some killer features like:</p>
+
+<ul>
+  <li>Provide <a href="https://docs.expo.io/bare/unimodules-full-list/">APIs</a> that work with React Native out the box</li>
+  <li>A single command let you to build and distribute your apps running on <a href="https://expo.io/">Expo</a> Services on cloud</li>
+  <li>Automatic Updates when your app is launched without having to build a new version of the standalone app and resubmitting to app stores</li>
+</ul>
+
+<p>The best of all, <a href="https://expo.io/">Expo</a> is an <em>Open Source project</em>, developed by Facebook.</p>
+
+<article class="message is-dark">
+  <div class="message-body">
+    <strong>Try it without have to install or configure your environment</strong>
+    <br />
+    If you like to give a try at this point, I've prepared very simple <a href="https://github.com/jferrer/react-native-example">example</a> to see how it works without having to install or configure nothing.
+  </div>
+</article>
+
+<p>Of course, you need to install <a href="https://www.docker.com/get-started">Docker</a>.</p>
+
+<p>Open your Terminal and clone the Github repo:</p>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span>git clone https://github.com/jferrer/react-native-example <span class="o">&amp;&amp;</span> <span class="nb">cd </span>react-native-example
+</code></pre></div>
+<p>Now, everything is ready to run the example app:</p>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span><span class="nb">export </span><span class="nv">PLATFORM</span><span class="o">=</span>:web
+<span class="nv">$ </span>docker-compose up
+</code></pre></div>
+<p>This is going to download the Docker Image that I prepared and run it with some parameters like map your local folder to can do changes in the code or exposing some needed ports.</p>
+
+<p>Click in the address that you will see and it will open the App in your browser.</p>
+
+<div class="highlight"><pre class="highlight shell"><code>app_1  |
+app_1  | You can now view react-native-example <span class="k">in </span>the browser
+app_1  |
+app_1  |  › Local   │ http://localhost:19006/
+app_1  |  › LAN     │ http://172.20.0.2:19006/
+app_1  |
+app_1  |  › Run expo build:web to optimize and build <span class="k">for </span>production
+app_1  |
+app_1  |  › Press w │ open <span class="k">in </span>the browser
+app_1  |  › Press ? │ show all commands
+
+</code></pre></div>
+<p><strong>Done!</strong> Now, press <code>Control+c</code> to exit.</p>
+
+<p>Next step, is to see the same App running on your mobile phone:</p>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span><span class="nb">export </span><span class="nv">PLATFORM</span><span class="o">=</span>
+<span class="nv">$ </span><span class="nb">export </span><span class="nv">LOCAL_ADDRESS</span><span class="o">=</span>your <span class="nb">local </span>address. Ex: 192.168.1.12
+<span class="nv">$ </span>docker-compose up
+</code></pre></div>
+<div class="highlight"><pre class="highlight shell"><code>app_1  | Starting project at /app
+app_1  | Expo DevTools is running at http://localhost:19002
+app_1  | Opening DevTools <span class="k">in </span>the browser... <span class="o">(</span>press shift-d to disable<span class="o">)</span>
+app_1  | Starting Metro Bundler
+app_1  |
+app_1  |  exp://192.168.1.37:19000
+app_1  |
+app_1  |
+app_1  |  <span class="o">(</span>QR Code should be here!<span class="o">)</span>
+app_1  |
+app_1  |
+app_1  |  To run the app, choose one of:
+app_1  |  › Scan the QR code above with the Expo app <span class="o">(</span>Android<span class="o">)</span> or the Camera app <span class="o">(</span>iOS<span class="o">)</span><span class="nb">.</span>
+app_1  |  › Press a <span class="k">for </span>Android emulator, or w to run on web.
+app_1  |  › Press e to send a <span class="nb">link </span>to your phone with email.
+app_1  |
+app_1  | Press ? to show a list of all available commands.
+app_1  | Logs <span class="k">for </span>your project will appear below. Press Ctrl+C to exit.
+
+</code></pre></div>
+<p>You will see a QR Code that you need to scan in Expo client that previously you have to install on your mobile phone: <a href="https://apps.apple.com/app/apple-store/id982107779">iOS</a> / <a href="https://play.google.com/store/apps/details?id=host.exp.exponent&amp;referrer=www">Android</a></p>
+
+<p><strong>Voila!</strong> The App is running on your mobile phone. Easy?</p>
+
+<p>At this point you can start playing with the code. For example, open the main file in your favorite text editor:</p>
+
+<div class="highlight"><pre class="highlight plaintext"><code># App.js
+
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+
+export default function App() {
+  return (
+    &lt;View style={styles.container}&gt;
+      &lt;Text&gt;Open up App.js to start working on your app!&lt;/Text&gt;
+      &lt;StatusBar style="auto" /&gt;
+    &lt;/View&gt;
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+</code></pre></div>
+<p>You will see that in you change the text inside the <code>&lt;Text&gt;&lt;/Text&gt;</code> tags and save. Automatically it changes in your mobile phone. Awesome!</p>
+
+<p>As I told before I found a very friendly and easy way to start building <strong>Cross-Platform Apps</strong> avoiding lot of headaches so if you want to continue learning I recommended to you to:</p>
+
+<ul>
+  <li>Read <a href="https://docs.expo.io/">Expo documentation</a></li>
+  <li>Read <a href="https://reactnative.dev/">React Native documentation</a></li>
+  <li>Read <a href="https://necolas.github.io/react-native-web/docs/?path=/docs/overview-getting-started--page">React Native for Web documentation</a></li>
+  <li>Follow <a href="https://twitter.com/baconbrix">@baconbrix</a></li>
+  <li>Follow <a href="https://twitter.com/wcandillon">@wcandillon</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+  <div class="content has-text-centered">
+    <p class="has-text-centered mt-6">
+      <a href="https://github.com/jferrer/moviendo.me">
+        <image src="https://github.com/jferrer/moviendo.me/workflows/build/badge.svg" width="104px" />
+      </a>
+      <br />
+      <span class="is-size-7">
+        Built with <a href="https://middlemanapp.com/">Middleman</a> &
+        <a href="https://github.com/features/actions">Github Actions</a>
+      </span>
+    </p>
+
+  </div>
+</footer>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RW0G8H6JG9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RW0G8H6JG9');
+</script>
+
+  </body>
+</html>
