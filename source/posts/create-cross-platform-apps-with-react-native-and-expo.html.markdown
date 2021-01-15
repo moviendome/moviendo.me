@@ -3,6 +3,7 @@
 title: Create Cross-Platform Apps With React Native and Expo
 date: 2021-01-03 00:01 UTC
 tags: development, react native, expo, docker
+ig: https://www.instagram.com/p/CKDV-IHBFk4/
 
 ---
 
