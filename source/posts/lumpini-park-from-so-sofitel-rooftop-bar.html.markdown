@@ -3,7 +3,7 @@
 title: Lumpini Park from SO Sofitel Rooftop Bar
 date: 2021-01-02 13:31 UTC
 tags: bangkok, place, rooftop
-ig: https://www.instagram.com/moviendome/
+ig: https://www.instagram.com/p/CKA35uZBqFG/
 
 ---
 
