@@ -15,7 +15,7 @@ I've spent most of my career working as **Full Stack Developer**, mainly buildin
 
 Because sometimes I missed the Frontend and because I'm always trying to learn new things, I decided to give a try to learn how to build Mobile apps.
 
-In the past, I played with *RubyMotion* or *Swift* but a few years ago while I was having some time off at Indian Himalayas I started to follow a random [React Native](http://reactnative.dev/) book to build **Cross-Platform Apps** (iOS & Android) and I liked! It looked like a nice way to build apps but I started to feel a bit annoyed with the compiling process, dependencies... so at the end I wasn't very engaged.
+In the past, I played with *RubyMotion* or *Swift* but a few years ago while I was having some time off at Indian Himalayas I met some **React Native** developers that showed me how they built some Apps using it so and I started to follow a random [React Native](http://reactnative.dev/) book to build **Cross-Platform Apps** (iOS & Android) and I liked! It looked like a nice way to build apps but I started to feel a bit annoyed with the compiling process, dependencies... so at the end I wasn't very engaged.
 
 <div class="content-image" markdown="1">
   ![](create-cross-platform-apps-with-react-native-and-expo/mc-leod-ganj-indian-himalaya.jpg)
