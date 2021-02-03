@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="profile" href="https://gmpg.org/xfn/11">
+<title>ES6 for React Developers - moviendo.me</title>
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+/>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+<link href="/site-a9346c1c.css" rel="stylesheet" />
+
+  </head>
+  <body>
+    <div class="container mt-5">
+  <div class="content">
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+<a href="/">            <img src="/images/moviendome-c8e84528.png" width="80px" alt="" />
+</a>        </div>
+      </div>
+
+      <div class="level-right">
+        <p class="level-item is-size-7 has-text-centered">
+          Minimalist • Full-Stack Developer • Based in Bangkok
+        </p>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+    <section class="section">
+      <div class="container">
+        <div class="content is-medium">
+          <h6 class="subtitle is-6 is-uppercase"><time>Feb  2, 2021</time></h6>
+          <div class="tags">
+              <span class="tag is-light is-uppercase">development</span>
+              <span class="tag is-light is-uppercase">javascript</span>
+              <span class="tag is-light is-uppercase">es6</span>
+              <span class="tag is-light is-uppercase">react</span>
+              <span class="tag is-light is-uppercase">react native</span>
+          </div>
+          <h1>ES6 for React Developers</h1>
+          <p>When I started my travel with <a href="/create-cross-platform-apps-with-react-native-and-expo.html">React Native</a> I noticed that my skills in <strong>Javascript</strong> were totally obsoleted. As <strong>Full-Stack Ruby on Rails developer</strong>, the <strong>Javascript</strong> that I’ve been doing for years was very basic and focused in the use of <em>jQuery</em> mainly for the Frontend and some <em>CoffeeScript</em>. So understanding the modern JS was crucial to can be proficient writing and understanding <a href="https://reactjs.org/">React</a>.</p>
+
+<p>First, looking at <strong>ES6</strong> I could see that it’s a big change with respect to the <em>“old JS”</em> bringing a lot of new features that make <strong>JavaScript</strong> an amazing language much more expressive and readable.</p>
+
+<p>These are the <strong>ES6</strong> features that every <a href="https://reactjs.org/">React</a> developer must know:</p>
+
+<h2 id="better-variable-declaration">Better variable declaration</h2>
+
+<p>No more <code>var</code> to declare variables avoiding issues with global scopes.</p>
+
+<p>Use:</p>
+
+<ul>
+  <li>
+    <p><code>const</code> when you are not going to update its value.</p>
+  </li>
+  <li>
+    <p><code>let</code> when you want to update its value.</p>
+  </li>
+</ul>
+
+<p>Also, <code>const</code> and <code>let</code> only can be declared once in the same scope and they are block scoped.</p>
+
+<p>To fast check, go to JS Console and try to update a variable declared with <code>const</code>:</p>
+
+<div class="highlight"><pre class="highlight javascript"><code><span class="kd">const</span> <span class="nx">something</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">cool</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">something</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Nop</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="o">=&gt;</span> <span class="nx">Uncaught</span> <span class="nx">TypeError</span><span class="p">:</span> <span class="nx">Assignment</span> <span class="nx">to</span> <span class="nx">constant</span> <span class="nx">variable</span><span class="p">.</span>
+</code></pre></div>
+<h2 id="string-literals">String literals</h2>
+
+<p>Present in other languages it allows us interpolation in strings:</p>
+
+<div class="highlight"><pre class="highlight javascript"><code><span class="c1">// Old</span>
+<span class="kd">const</span> <span class="nx">language</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Javascript</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">language</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> is great</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="c1">// New</span>
+<span class="s2">`</span><span class="p">${</span><span class="nx">language</span><span class="p">}</span><span class="s2"> is great`</span><span class="p">;</span>
+</code></pre></div>
+<p>Other advantages:</p>
+
+<ul>
+  <li>Avoid escape when special characters</li>
+  <li>New lines are preserved</li>
+</ul>
+
+<div class="highlight"><pre class="highlight javascript"><code><span class="kd">const</span> <span class="nx">multiline</span> <span class="o">=</span> <span class="s2">`
+This is a multiline message
+
+Thanks to the new feature String Literals
+
+Happy coding,
+</span><span class="p">${</span><span class="nx">language</span><span class="p">}</span><span class="s2">
+`</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="arrow-functions">Arrow functions</h2>
+
+<p>Very similar to <em>CoffeeScript</em> this new syntax brings several benefits:</p>
+
+<ul>
+  <li>More consise, no more <code>function</code> keyword</li>
+  <li>Implicit <code>return</code></li>
+  <li>Automatic binding to context, so no more <code>this</code></li>
+</ul>
+
+<div class="highlight"><pre class="highlight javascript"><code>
+<span class="kd">const</span> <span class="nx">multiply</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span>
+<span class="p">}</span>
+
+<span class="c1">// same</span>
+<span class="kd">const</span> <span class="nx">multiply</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="deconstructing">Deconstructing</h2>
+
+<p>It allows us to extract variables from arrays and objects with a simpler syntax:</p>
+
+<div class="highlight"><pre class="highlight javascript"><code><span class="kd">const</span> <span class="nx">languages</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Javascript</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Ruby</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Golang</span><span class="dl">'</span><span class="p">];</span>
+<span class="kd">const</span> <span class="p">[</span><span class="nx">one</span><span class="p">,</span> <span class="nx">two</span><span class="p">,</span> <span class="nx">three</span><span class="p">]</span> <span class="o">=</span> <span class="nx">languages</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">lastName</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Doe</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">contact</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">john@doe.com</span><span class="dl">'</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">,</span> <span class="na">contact</span><span class="p">:</span> <span class="p">{</span> <span class="nx">email</span> <span class="p">}</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">user</span><span class="p">;</span>
+</code></pre></div>
+<p>You will see this case a lot at the top of React Components to extract values from <code>props</code>:</p>
+
+<div class="highlight"><pre class="highlight javascript"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">title</span><span class="p">,</span> <span class="nx">subtitle</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">props</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="rest--spead-operator">Rest &amp; Spead operator</h2>
+
+<p>It allows us to expand elements:</p>
+
+<div class="highlight"><pre class="highlight javascript"><code><span class="kd">const</span> <span class="nx">languages</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Javascript</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Ruby</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Golang</span><span class="dl">'</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">newArr</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Rust</span><span class="dl">'</span><span class="p">,</span> <span class="p">...</span><span class="nx">languages</span><span class="p">];</span>
+</code></pre></div>
+<p>Also, commonly used to modify a Redux store:</p>
+
+<div class="highlight"><pre class="highlight javascript"><code><span class="nx">state</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">expense</span> <span class="o">=&gt;</span>
+  <span class="nx">expense</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">id</span>
+    <span class="p">?</span> <span class="p">{</span>
+      <span class="p">...</span><span class="nx">expense</span><span class="p">,</span>
+      <span class="na">title</span><span class="p">:</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span>
+      <span class="na">amount</span><span class="p">:</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">amount</span><span class="p">,</span>
+      <span class="p">}</span>
+    <span class="p">:</span> <span class="nx">expense</span>
+<span class="p">)</span>
+</code></pre></div>
+<h2 id="shorthand-syntax">Shorthand syntax</h2>
+
+<p>It makes objects more concise.</p>
+
+<div class="highlight"><pre class="highlight javascript"><code><span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">email</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="nx">name</span><span class="p">,</span>
+    <span class="na">email</span><span class="p">:</span> <span class="nx">email</span><span class="p">,</span>
+    <span class="na">timestamp</span><span class="p">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// same with shorthand</span>
+<span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">email</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="p">,</span>
+    <span class="nx">email</span><span class="p">,</span>
+    <span class="na">timestamp</span><span class="p">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>These are only a few of the new features included in ES6 but IMO the most relevant to work with React.</p>
+
+
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+  <div class="content has-text-centered">
+    <p class="has-text-centered mt-6">
+      <a href="https://github.com/jferrer/moviendo.me">
+        <image src="https://github.com/jferrer/moviendo.me/workflows/build/badge.svg" width="104px" />
+      </a>
+      <br />
+      <span class="is-size-7">
+        Built with <a href="https://middlemanapp.com/">Middleman</a> &
+        <a href="https://github.com/features/actions">Github Actions</a>
+      </span>
+    </p>
+
+  </div>
+</footer>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RW0G8H6JG9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RW0G8H6JG9');
+</script>
+
+  </body>
+</html>
