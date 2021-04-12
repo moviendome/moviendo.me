@@ -38,6 +38,10 @@ body {
           margin-bottom: 40px;
         }
 
+        h2 {
+          margin-top: 40px;
+        }
+
         .highlight,
         .intro,
         .message {
@@ -51,6 +55,19 @@ body {
           max-width: 800px;
           margin: 20px auto;
           filter: grayscale(100%);
+
+          p {
+            max-width: 800px;
+            margin: 20px auto;
+            filter: grayscale(100%);
+          }
+        }
+
+        .content-image-border {
+          max-width: 800px;
+          margin: 20px auto;
+          filter: grayscale(100%);
+          border: 1px solid #eee;
 
           p {
             max-width: 800px;
