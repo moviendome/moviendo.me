@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="profile" href="https://gmpg.org/xfn/11">
+<title>My experience at YCombinator Startup School Online - moviendo.me</title>
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+/>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+<link href="/site-a997696d.css" rel="stylesheet" />
+
+  </head>
+  <body>
+    <div class="container mt-5">
+  <div class="content">
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+<a href="/">            <img src="/images/moviendome-c8e84528.png" width="80px" alt="" />
+</a>        </div>
+      </div>
+
+      <div class="level-right">
+        <p class="level-item is-size-7 has-text-centered">
+          Minimalist • Full-Stack Developer • Based in Bangkok
+        </p>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+    <section class="section">
+      <div class="container">
+        <div class="content is-medium">
+          <h6 class="subtitle is-6 is-uppercase"><time>Apr 11, 2021</time></h6>
+          <div class="tags">
+              <span class="tag is-light is-uppercase">general</span>
+              <span class="tag is-light is-uppercase">startup</span>
+          </div>
+          <h1>My experience at YCombinator Startup School Online</h1>
+          <div class="content-image">
+  <p><img src="/my-experience-at-ycombinator-startup-school-online/startup-school-the-best-resource-for-founders-1c9b3762.jpg" alt="" /></p>
+</div>
+
+<p><a href="https://www.ycombinator.com/">YCombinator</a> (YC) is one of the most known <em>Startup Accelerator Programs in the World</em>. It was founded in 2005 and <em>it invests $120.000 for 7% in seed funding</em>. Startups like <strong>Stripe, Airbnb, Dropbox, Reddit, Twitch or Coinbase</strong> used it to launch their companies.</p>
+
+<p>To give you an idea how big is, <strong>the combined valuation of the top YC companies is over $300 billions</strong> (Jan 2021)</p>
+
+<p>Early this year a friend talked me about the <a href="http://startupschool.com/">Startup School Online</a>: <strong>A free 4-week online course to build and launch your Startup!</strong></p>
+
+<p>At first, 4 weeks to define an idea, build the product and launch it sounds very short to me but after check the content of the course, the benefits and what people told about YC I decided to try.</p>
+
+<h2 id="what-you-get">What you get</h2>
+
+<ul>
+  <li>Weekly Sprint check-in calls</li>
+  <li>Weekly Tracking goals to stay on track</li>
+  <li>Weekly Live Group Sessions with other founders</li>
+  <li>High quality content (videos &amp; lectures). I had to complete 19, I don’t know if it’s the same for everyone. Also, get access to more that 300 resources.</li>
+  <li>Forum with a global community of founders.</li>
+  <li>Get access to more than $100,000 worth of deals on AWS, GCP, Digital Ocean, Stripe, Brex, Segment, and more. (once you are certified and approved by YC)</li>
+</ul>
+
+<h2 id="how-i-structured-the-4-weeks">How I structured the 4 weeks</h2>
+
+<h3 id="week-1-find-the-project">Week 1: Find the project</h3>
+
+<p>I always have a few projects in mind waiting to find some time to can work on them so I checked all my notes to decide which one could be good for this program and if 4 weeks would be enough time to build it.</p>
+
+<p>Finally, I chose the one that I really missed every day the last year when I was going to the office by taxi.</p>
+
+<p>It was early 2020 and I’ve just moved to Bangkok to work for <a href="https://www.omise.co/">Omise</a>. I’ve had to spend some time every day in a taxi commuting to office and I loved the landscape, the skyscrappers… <strong>everything was new to me and I didn’t want to waste that time looking at my phone reading the daily news or checking the email instead of looking through the window.</strong></p>
+
+<p>Because I’m a big fan of <a href="https://www.blinkist.com/">Blinkist</a>, some days I listened the resume of some random audiobook but <strong>I thought that it would be nice to can listen all my daily news in something similar to a tailored podcast. So I coded a small service that got news from my favorite RSS feeds and convert it to audio.</strong></p>
+
+<p>This seemed to be the perfect project to work on! <strong>It was something that I was going to use every day, I could try some technologies that were in my radar for some time and I already built a very simple service that I only had to improve</strong>. But there was some pending things to build: the mobile App and the API to can automate all the process and an deliver as a product.</p>
+
+<h3 id="week-2-build-the-api">Week 2: Build the API</h3>
+
+<p>Because this is my main field I didn’t have much complications to build and deploy the API in less than one week.</p>
+
+<p>I chose my favorite framework: <a href="https://rubyonrails.org/">Ruby on Rails</a>. After 15 years working with Rails I still in love it and I find it the best way to create an API very fast.</p>
+
+<p>Because the project was pretty small I decided to go for plain-Rails and not use <a href="https://trailblazer.to/">Trailblazer</a> or similar to encapsulate the Business Logic. At this point, a few Service Objects would be enough.</p>
+
+<p>Sinco a few years ago I always use TDD because it helps me to build faster and think better about every part of the project. I use Minitest to write the tests because I find it easier than RSpec, less verbose and it’s included with the Framework.</p>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="c"># Running:</span>
+
+..................
+
+Finished <span class="k">in </span>1.714749s, 10.4972 runs/s, 26.2429 assertions/s.
+18 runs, 45 assertions, 0 failures, 0 errors, 0 skips
+</code></pre></div>
+<p>For CI, I’ve been using directly <a href="https://github.com/features/actions">Github Actions</a> in my last projects. Even I use it to automate the build of this blog that is built with Middleman.</p>
+
+<p><a href="https://www.heroku.com/">Heroku</a> to deploy it. I’m still really impressed about how amazing and easy is Heroku compared to have to deal with all the configuration in other providers like Amazon Web Services or Digital Ocean.</p>
+
+<h3 id="week-3-build-the-app">Week 3: Build the App</h3>
+
+<p>I’ve been playing with <a href="https://expo.io/">Expo</a> and <a href="https://reactnative.dev/">React Native</a> for almost 2 years now and I find it awesome!</p>
+
+<p><strong>Literally you can start an App and have running it on your phone in less than 5 minutes.</strong> I wrote previously about this: <a href="/create-cross-platform-apps-with-react-native-and-expo.html">Create Cross-Platform Apps With React Native and Expo</a>.</p>
+
+<p>Also, I really like the idea of have a single codebase that runs as Web or compile to Native.</p>
+
+<p>So I spent the 3rd week of the course building the Webapp to connect it to my API.</p>
+
+<div class="content-image">
+  <p><img src="/my-experience-at-ycombinator-startup-school-online/audiopill-pro-3a3a25b7.jpg" alt="" /></p>
+</div>
+
+<p>I deployed it to <a href="https://aws.amazon.com/amplify/">AWS Amplify</a> to try the service. Easy! I’ve only had to add a configuration file to the Github repository and AWS do the build automatically and deploy it on every push.</p>
+
+<h3 id="week-4-create-content-and-some-refactor">Week 4: Create content and some refactor</h3>
+
+<p>Although I was been generating some sample audio content during the development now I had to focus in generate the real content for the service.</p>
+
+<p><strong>I thought that it could be more, not only daily news so adding more content I could learn about different topics listening short audio pills</strong>.</p>
+
+<p>I forgot to mention before but I built the service that generate the audio as an exercise that let me try some new tech:</p>
+
+<ul>
+  <li>Small program in <a href="https://golang.org/">Golang</a> running in <a href="https://aws.amazon.com/lambda/">AWS Lambda</a></li>
+  <li><a href="https://aws.amazon.com/s3/">AWS S3</a> to store the audio file</li>
+  <li><a href="https://aws.amazon.com/api-gateway/">AWS API Gateway </a> for the Endpoint</li>
+</ul>
+
+<p>Last, I gave a try to <a href="https://www.terraform.io/">Terraform</a> to automate the configuration and deployment of the services.</p>
+
+<h2 id="when-course-finish">When course finish</h2>
+
+<p>After the first 4 weeks I had some new materials to complete and I still had to send my goals another 4 weeks to obtain the certification and can apply for the provider deals.</p>
+
+<p>Later, you still have access to the platform so you can continue watching/reading the materials (as I told before there are more than 300 resources), sending your weekly goals or connecting with other founders at Forum.</p>
+
+<div class="content-image-border">
+  <p><img src="/my-experience-at-ycombinator-startup-school-online/yc-startup-school-certificate-e890b4c2.jpg" alt="" /></p>
+</div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p><strong>At the end, 4 weeks working 4-6 hours/day (Monday to Friday) + watch the videos and read the lectures was more than enough to build the MVP and send to some friends to get some feedback.</strong></p>
+
+<p>The experience was really good! I had the opportunity to focus on build and launch something that was in my mind for some time, learn a lot with course’ contents, talk with other founders and feel that I was part of a global community of fourders.</p>
+
+<h2 id="whats-next">What’s next!</h2>
+
+<p>I think is worth it to continue checking some of the pending materials, connecting with other founders through the Forum and check the announcements because they are adding new features to the platform.</p>
+
+<p>Also, I won’t stop sending my weekly goals because it help me to stay on track.</p>
+
+<p>Last, if you want to see what I’ve built along this course visit <a href="https://audiopill.pro">Audio Pill</a></p>
+
+
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+  <div class="content has-text-centered">
+    <p class="has-text-centered mt-6">
+      <a href="https://github.com/jferrer/moviendo.me">
+        <image src="https://github.com/jferrer/moviendo.me/workflows/build/badge.svg" width="104px" />
+      </a>
+      <br />
+      <span class="is-size-7">
+        Built with <a href="https://middlemanapp.com/">Middleman</a> &
+        <a href="https://github.com/features/actions">Github Actions</a>
+      </span>
+    </p>
+
+  </div>
+</footer>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RW0G8H6JG9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RW0G8H6JG9');
+</script>
+
+  </body>
+</html>
