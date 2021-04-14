@@ -38,7 +38,13 @@ activate :imageoptim do |options|
   options.jpegtran  = { copy_chunks: false, progressive: true, jpegrescan: true }
 end
 
+configure :development do
+  config[:host] = 'http://0.0.0.0:4567/'
+end
+
 configure :build do
+  config[:host] = 'https://moviendo.me/'
+
   activate :minify_css, inline: true
   # activate :minify_html
   activate :asset_hash
