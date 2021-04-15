@@ -4,7 +4,7 @@ title: My experience at YCombinator Startup School Online
 description: YCombinator is one of the most known Startup Accelerator Programs in the Worldand Startups like Stripe, Airbnb, Dropbox, Reddit, Twitch or Coinbase used it to launch their companies.
 date: 2021-04-11 00:01 UTC
 tags: general, startup
-cover: my-experience-at-ycombinator-startup-school-online/startup-school-the-best-resource-for-founders.jpg
+cover: my-experience-at-ycombinator-startup-school-online/startup-school-the-best-resource-for-founders-1c9b3762.jpg
 
 ---
 
