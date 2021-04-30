@@ -40,7 +40,7 @@ Moreover, [Expo](https://expo.io/) has some killer features like:
 - A single command let you to build and distribute your apps running on [Expo](https://expo.io/) Services on cloud
 - Automatic Updates when your app is launched without having to build a new version of the standalone app and resubmitting to app stores
 
-The best of all, [Expo](https://expo.io/) is an *Open Source project*, developed by Facebook.
+[Expo](https://expo.io/) is a platform for making universal native apps that run on Android, iOS, and the web.
 
 <article class="message is-dark" markdown="1">
   <div class="message-body">
