@@ -3,7 +3,7 @@
 title: Create a Rails API + Postgres with Docker from scratch without having to even install Ruby locally
 date: 2021-05-05 00:01 UTC
 tags: development, api, rails, postgres, docker, docker-compose
-cover: create-a-rails-api-postgres-with-docker-from-scratch-without-having-to-even-install-ruby-locally/ruby-on-rails-docker.jpg
+cover: create-a-rails-api-postgres-with-docker-from-scratch-without-having-to-even-install-ruby-locally/ruby-on-rails-docker-564aca1b.jpg
 
 ---
 
