@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="profile" href="https://gmpg.org/xfn/11">
+<title>Create a Rails API + Postgres with Docker from scratch without having to even install Ruby locally - moviendo.me</title>
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+/>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+<link href="/site-a997696d.css" rel="stylesheet" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@moviendo_me" />
+<meta name="twitter:creator" content="@moviendo_me" />
+<meta property="og:url" content="https://moviendo.me/posts/create-a-rails-api-postgres-with-docker-from-scratch-without-having-to-even-install-ruby-locally.html" />
+<meta property="og:title" content="Create a Rails API + Postgres with Docker from scratch without having to even install Ruby locally" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://moviendo.me/create-a-rails-api-postgres-with-docker-from-scratch-without-having-to-even-install-ruby-locally/ruby-on-rails-docker.jpg" />
+
+  </head>
+  <body>
+    <div class="container mt-5">
+  <div class="content">
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+<a href="/">            <img src="/images/moviendome-c8e84528.png" width="80px" alt="" />
+</a>        </div>
+      </div>
+
+      <div class="level-right">
+        <p class="level-item is-size-7 has-text-centered">
+          Minimalist • React/Rails Engineer • Based in Bangkok
+        </p>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+    <section class="section">
+      <div class="container">
+        <div class="content is-medium">
+          <h6 class="subtitle is-6 is-uppercase"><time>May  5, 2021</time></h6>
+          <div class="tags">
+              <span class="tag is-light is-uppercase">development</span>
+              <span class="tag is-light is-uppercase">api</span>
+              <span class="tag is-light is-uppercase">rails</span>
+              <span class="tag is-light is-uppercase">postgres</span>
+              <span class="tag is-light is-uppercase">docker</span>
+              <span class="tag is-light is-uppercase">docker-compose</span>
+          </div>
+          <h1>Create a Rails API + Postgres with Docker from scratch without having to even install Ruby locally</h1>
+          <div class="content-image">
+  <p><img src="/create-a-rails-api-postgres-with-docker-from-scratch-without-having-to-even-install-ruby-locally/ruby-on-rails-docker-564aca1b.jpg" alt="" /></p>
+</div>
+
+<p>Every time that I have to start a new project (Ruby, Rails, JS…) I always start <a href="https://www.docker.com/">Docker</a> first! This means, I never install a single Gem or Package on my local machine.</p>
+
+<p>It helps me to avoid conflicts with different versions of the same package, lost dependencies in the system and so on.</p>
+
+<p>Everything that I use for development on my laptop runs in a <a href="https://www.docker.com/">Docker</a> container, even <a href="https://github.com/jferrer/neovim-dockerized">Neovim</a>.</p>
+
+<p>This is an example of how to create, step by step, a <a href="http://rubyonrails.org/">Ruby on Rails</a> API + <a href="https://www.postgresql.org/">Postgres</a> and the only thing you need to follow is <a href="https://www.docker.com/">Docker</a>.</p>
+
+<p>So let’s start:</p>
+
+<h2 id="create-the-directory-for-the-api">Create the directory for the API</h2>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span><span class="nb">mkdir </span>docker-compose-rails-api
+<span class="nv">$ </span><span class="nb">cd </span>docker-compose-rails-api
+</code></pre></div>
+<h2 id="create-the-dockerfile">Create the Dockerfile</h2>
+
+<div class="highlight"><pre class="highlight shell"><code>FROM ruby:2.7.3
+LABEL <span class="nv">Description</span><span class="o">=</span><span class="s2">"Docker Rails API Base"</span>
+WORKDIR /app
+
+RUN gem <span class="nb">install </span>bundler
+
+CMD <span class="nb">exec </span>bin/start.sh
+</code></pre></div>
+<h2 id="create-the-gemfile">Create the Gemfile</h2>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="nb">source</span> <span class="s2">"https://rubygems.org"</span>
+
+ruby <span class="s2">"2.7.3"</span>
+gem <span class="s2">"rails"</span>, <span class="s2">"~&gt; 6.1.3.2"</span>
+</code></pre></div>
+<h2 id="create-the-docker-composeyml">Create the docker-compose.yml</h2>
+
+<div class="highlight"><pre class="highlight shell"><code>version: <span class="s2">"3"</span>
+services:
+  api:
+    restart: on-failure
+    build: <span class="nb">.</span>
+    <span class="nb">tty</span>: <span class="nb">true
+    </span>stdin_open: <span class="nb">true
+    </span>volumes:
+      - .:/app
+      - bundle_cache:/usr/local/bundle
+    ports:
+      - <span class="s2">"3000:3000"</span>
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://postgres@db/api_development
+      TEST_DATABASE_URL: postgresql://postgres@db/api_test
+  db:
+    image: postgres:latest
+    volumes:
+      - ./docker/data-volume/postgresql:/var/lib/postgresql/data
+    ports:
+      - 5456:5432
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+volumes:
+  bundle_cache:
+</code></pre></div>
+<h2 id="create-a-binstartsh-file">Create a bin/start.sh file</h2>
+
+<div class="highlight"><pre class="highlight shell"><code>bundle check <span class="o">||</span> bundle <span class="nb">install
+
+</span><span class="k">if</span> <span class="o">[</span> <span class="nt">-f</span> tmp/pids/server.pid <span class="o">]</span><span class="p">;</span> <span class="k">then
+  </span><span class="nb">rm</span> <span class="nt">-f</span> tmp/pids/server.pid
+<span class="k">fi
+
+</span>bin/rails s <span class="nt">-p</span> 3000 <span class="nt">-b</span> 0.0.0.0
+</code></pre></div>
+<h3 id="and-set-permissions">And set permissions</h3>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span><span class="nb">chmod</span> +x bin/start.sh
+</code></pre></div>
+<h2 id="install-rails">Install Rails</h2>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span>docker-compose run api gem <span class="nb">install </span>rails <span class="nt">-v</span> 6.1.3.2
+</code></pre></div>
+<h2 id="create-the-rails-api">Create the Rails API</h2>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span>docker-compose run api rails new <span class="nb">.</span> <span class="nt">--api</span> <span class="nt">--force</span> <span class="nt">--database</span><span class="o">=</span>postgresql <span class="nt">--skip-bundle</span>
+</code></pre></div>
+<h2 id="replace-content-of-configdatabaseyml-with-this">Replace content of config/database.yml with this:</h2>
+
+<div class="highlight"><pre class="highlight shell"><code>global: &amp;default
+    adapter: postgresql
+    pool: 5
+    url: &lt;%<span class="o">=</span> ENV[<span class="s2">"DATABASE_URL"</span><span class="o">]</span> %&gt;
+
+  development:
+    &lt;&lt;: <span class="k">*</span>default
+
+  <span class="nb">test</span>:
+    &lt;&lt;: <span class="k">*</span>default
+    url: &lt;%<span class="o">=</span> ENV[<span class="s2">"TEST_DATABASE_URL"</span><span class="o">]</span> %&gt;
+
+  production:
+    &lt;&lt;: <span class="k">*</span>default
+</code></pre></div>
+<h2 id="start-the-server">Start the server</h2>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span>docker-compose up <span class="nt">-d</span>
+</code></pre></div>
+<h2 id="create-the-database">Create the database</h2>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span>docker-compose run api bin/rails db:create
+</code></pre></div>
+<h2 id="voil">Voilà!</h2>
+
+<p>Go to your browser and check <a href="http://0.0.0.0:3000">http://0.0.0.0:3000</a> to see it working!</p>
+
+
+
+            <p class="has-text-centered mt-6">
+              <a href="https://twitter.com/moviendo_me" target="_blank">
+                <img src="/images/icons/twitter-c245de86.svg" width="30px" alt="" />
+              </a>
+            </p>
+
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+  <div class="content has-text-centered">
+    <p class="has-text-centered mt-6">
+      <a href="https://github.com/jferrer/moviendo.me">
+        <image src="https://github.com/jferrer/moviendo.me/workflows/build/badge.svg" width="104px" />
+      </a>
+      <br />
+      <span class="is-size-7">
+        Built with <a href="https://middlemanapp.com/">Middleman</a> &
+        <a href="https://github.com/features/actions">Github Actions</a>
+      </span>
+    </p>
+
+  </div>
+</footer>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RW0G8H6JG9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RW0G8H6JG9');
+</script>
+
+  </body>
+</html>
