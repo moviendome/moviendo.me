@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="profile" href="https://gmpg.org/xfn/11">
+<title>Boilerplate to start building Cross-Platform Apps with Expo and React Native - moviendo.me</title>
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+/>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+<link href="/site-a997696d.css" rel="stylesheet" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@moviendo_me" />
+<meta name="twitter:creator" content="@moviendo_me" />
+<meta property="og:url" content="https://moviendo.me/posts/boilerplate-to-start-building-cross-platform-apps-with-expo-and-react-native.html" />
+<meta property="og:title" content="Boilerplate to start building Cross-Platform Apps with Expo and React Native" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://moviendo.me/create-cross-platform-apps-with-react-native-and-expo/expo-9032583c.jpg" />
+
+  </head>
+  <body>
+    <div class="container mt-5">
+  <div class="content">
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+<a href="/">            <img src="/images/moviendome-c8e84528.png" width="80px" alt="" />
+</a>        </div>
+      </div>
+
+      <div class="level-right">
+        <p class="level-item is-size-7 has-text-centered">
+          Minimalist • React/Rails Engineer • Based in Bangkok
+        </p>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+    <section class="section">
+      <div class="container">
+        <div class="content is-medium">
+          <h6 class="subtitle is-6 is-uppercase"><time>May 19, 2021</time></h6>
+          <div class="tags">
+              <span class="tag is-light is-uppercase">development</span>
+              <span class="tag is-light is-uppercase">react native</span>
+              <span class="tag is-light is-uppercase">expo</span>
+              <span class="tag is-light is-uppercase">docker</span>
+          </div>
+          <h1>Boilerplate to start building Cross-Platform Apps with Expo and React Native</h1>
+          <div class="content-image">
+  <p><img src="/create-cross-platform-apps-with-react-native-and-expo/expo-9032583c.jpg" alt="" /></p>
+</div>
+
+<p><a href="https://expo.io/">Expo</a> and <a href="http://reactnative.dev/">React Native</a> is the perfect combination to build Cross-Platform Apps.</p>
+
+<p>When I started to build Apps using this approach I had to understand the limitations and that, although, the React Native ecosystem is big I cannot use all the libraries if I wanted to run my app on Web, Native &amp; Desktop with a single codebase.</p>
+
+<p>There are different libraries to do the same job and it’s important to choose the one that fits better and is cross-platform.</p>
+
+<h2 id="what-are-you-going-to-find-in-this-boilerplate">What are you going to find in this boilerplate</h2>
+
+<h3 id="expo">Expo</h3>
+
+<p><a href="https://expo.io/">Expo</a> is an open-source platform for making universal native apps for Android, iOS, and the web with JavaScript and React.</p>
+
+<h3 id="react-native-for-web">React Native for Web</h3>
+
+<p><a href="https://github.com/necolas/react-native-web">React Native for Web</a> makes it possible to run React Native components and APIs on the web using React DOM.</p>
+
+<p>It was included in <a href="https://blog.expo.io/expo-sdk-v33-0-0-is-now-available-52d1c99dfe4c">Expo SDK 33</a>, so one less thing to worry about.</p>
+
+<h3 id="react-navigation">React Navigation</h3>
+
+<p><a href="https://reactnavigation.org/">React Navigation</a> adss routing and navigation to your React Native apps.</p>
+
+<h3 id="electron">Electron</h3>
+
+<p><a href="https://www.electronjs.org/">Electron</a> let you build cross platform desktop apps with JavaScript, HTML, and CSS.</p>
+
+<h3 id="easy-peasy">Easy Peasy</h3>
+
+<p><a href="https://easy-peasy.vercel.app/">Easy Peasy</a> is an abstraction of Redux, providing a reimagined API that focuses on developer experience.</p>
+
+<h3 id="react-native-async-storage">React Native Async Storage</h3>
+
+<p><a href="https://github.com/react-native-async-storage/async-storage">React Native Async Storage</a> is an asynchronous, persistent, key-value storage system for React Native.</p>
+
+<h3 id="react-native-paper">React Native Paper</h3>
+
+<p>Although, I use it in most of my Apps, sometimes I prefer to use my own components. Anyway, if you prefer to start with a collection of customizable and production-ready Cross-Platform components for React Native, I highly recommend to you add to your project with:</p>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span>expo <span class="nb">install </span>react-native-paper
+</code></pre></div>
+<h2 id="how-to-try-this-boilerplate">How to try this boilerplate</h2>
+
+<p>You can download and run the repository from my Github account: <a href="https://github.com/jferrer/expo-boilerplate">jferrer/expo-boilerplate</a></p>
+
+<h3 id="clone-the-repo-and-install-dependencies">Clone the repo and install dependencies:</h3>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span>git clone https://github.com/jferrer/expo-boilerplate.git
+<span class="nv">$ </span><span class="nb">cd </span>expo-boilerplate
+<span class="nv">$ </span>yarn <span class="nb">install</span>
+</code></pre></div>
+<h3 id="run-for-web--native">Run for Web &amp; Native:</h3>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span>expo start
+</code></pre></div>
+<h3 id="run-for-desktop">Run for Desktop:</h3>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span>yarn expo-electron start
+</code></pre></div>
+<p>Inside, you’ll see the basic configuration and screens to start an App:</p>
+
+<ul>
+  <li>Typical Tab Bar navigation like Facebook or Instagram</li>
+  <li>Action &amp; Form Screen to add elements to the Store</li>
+  <li>List Screen</li>
+</ul>
+
+
+
+            <p class="has-text-centered mt-6">
+              <a href="https://twitter.com/moviendo_me" target="_blank">
+                <img src="/images/icons/twitter-c245de86.svg" width="30px" alt="" />
+              </a>
+            </p>
+
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+  <div class="content has-text-centered">
+    <p class="has-text-centered mt-6">
+      <a href="https://github.com/jferrer/moviendo.me">
+        <image src="https://github.com/jferrer/moviendo.me/workflows/build/badge.svg" width="104px" />
+      </a>
+      <br />
+      <span class="is-size-7">
+        Built with <a href="https://middlemanapp.com/">Middleman</a> &
+        <a href="https://github.com/features/actions">Github Actions</a>
+      </span>
+    </p>
+
+  </div>
+</footer>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RW0G8H6JG9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RW0G8H6JG9');
+</script>
+
+  </body>
+</html>
