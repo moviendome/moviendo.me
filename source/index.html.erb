@@ -1,8 +1,10 @@
 ---
-title: Minimalist • React/Rails Engineer • Based in Bangkok
+title: A Developer, Author, Creator and Blogger based in Thailand
+pageable: true
+per_page: 20
 ---
 
-<% blog.articles.each do |article| %>
+<% page_articles.each do |article| %>
   <% unless article.tags.include?("draft") %>
     <div class="post">
       <h6 class="subtitle is-6 is-uppercase"><time><%= article.date.strftime('%b %e, %Y') %></time></h6>
@@ -25,6 +27,19 @@ title: Minimalist • React/Rails Engineer • Based in Bangkok
       </p>
     </div>
   <% end %>
+<% end %>
+
+<% if paginate %>
+  <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+    <ul class="pagination-list">
+      <% if prev_page %>
+        <%= link_to 'Previous', prev_page, class: "pagination-previous" %>
+      <% end %>
+      <% if next_page %>
+        <%= link_to 'Next page', next_page, class: "pagination-next" %>
+      <% end %>
+    </ul>
+  </nav>
 <% end %>
 
 <p class="has-text-centered mt-6">

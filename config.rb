@@ -15,6 +15,9 @@ activate :blog do |blog|
   blog.sources = 'posts/{title}.html'
   blog.permalink = '{title}.html'
   blog.summary_separator = /SPLIT_SUMMARY_BEFORE_THIS/
+  blog.paginate = true
+  blog.page_link = 'page/{num}'
+  # blog.per_page = 2
 end
 
 activate :imageoptim do |options|
