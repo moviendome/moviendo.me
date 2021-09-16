@@ -1,0 +1,346 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="profile" href="https://gmpg.org/xfn/11">
+<title>Building a Solana Wallet Cross-Platform App with Expo, Web3 & React Native - moviendo.me</title>
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+/>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+<link href="/site-a997696d.css" rel="stylesheet" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@moviendo_me" />
+<meta name="twitter:creator" content="@moviendo_me" />
+<meta property="og:url" content="https://moviendo.me/posts/building-a-solana-wallet-cross-platform-app-with-expo-web3-and-react-native.html" />
+<meta property="og:title" content="Building a Solana Wallet Cross-Platform App with Expo, Web3 & React Native" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://moviendo.me/building-a-solana-wallet-cross-platform-app-with-expo-web3-and-react-native/solana-wallet-app.jpg" />
+
+  </head>
+  <body>
+    <div class="container mt-5">
+  <div class="content">
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+<a href="/">            <img src="/images/moviendome-c8e84528.png" width="80px" alt="" />
+</a>        </div>
+      </div>
+
+      <div class="level-right">
+        <p class="level-item is-size-7 has-text-centered">
+          A Developer, Author, Creator and Blogger based in Thailand
+        </p>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+    <section class="section">
+      <div class="container">
+        <div class="content is-medium">
+          <h6 class="subtitle is-6 is-uppercase"><time>Aug  8, 2021</time></h6>
+          <div class="tags">
+              <span class="tag is-light is-uppercase">development</span>
+              <span class="tag is-light is-uppercase">react native</span>
+              <span class="tag is-light is-uppercase">expo</span>
+              <span class="tag is-light is-uppercase">web3</span>
+              <span class="tag is-light is-uppercase">solana</span>
+          </div>
+          <h1>Building a Solana Wallet Cross-Platform App with Expo, Web3 & React Native</h1>
+          <div class="content-image">
+  <p><img src="/building-a-solana-wallet-cross-platform-app-with-expo-web3-and-react-native/solana-wallet-app-d4a8563f.jpg" alt="" /></p>
+</div>
+
+<p>As a developer I’ve been interested in the Blockchain space for long time and although a few years ago I started to learn Solidity for fun I didn’t build something real.</p>
+
+<p>Few weeks ago, having a coffee in one of my favorite places here in the island I started to read about <a href="https://solana.com/">Solana</a> and I found some easy Node scripts to do the basic operations with Web3 so I did one of the most dangerous things you can do :D</p>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span>expo init solana-wallet
+</code></pre></div>
+<p>I thought that build a basic Wallet App could be a good introduction to <strong>Solana and Web3</strong> and let me practice more with Expo and React Native.</p>
+
+<p>So I spent the rest of the weekend and some time more the next week <strong>building a fully functional Cross-Platform Solana Wallet App</strong>.</p>
+
+<h2 id="screens-and-features">Screens and Features</h2>
+
+<p>The App is really simple. For now, it has these:</p>
+
+<h3 id="welcome">Welcome</h3>
+
+<p>This screen only shows a button to start!</p>
+
+<div class="content-image">
+  <p><img src="/building-a-solana-wallet-cross-platform-app-with-expo-web3-and-react-native/welcome-1e53e78c.png" alt="" /></p>
+</div>
+
+<h3 id="create-your-passcode">Create your passcode</h3>
+
+<p>This screen let you create a passcode that for now is only requested when you want to see your recovery phrase.</p>
+
+<p>Later, it can be used to encrypt the seed, before doing a transfer or even to access to the full app.</p>
+
+<div class="content-image">
+  <p><img src="/building-a-solana-wallet-cross-platform-app-with-expo-web3-and-react-native/passcode-085e77c7.png" alt="" /></p>
+</div>
+
+<h3 id="dashboard">Dashboard</h3>
+
+<p>This screen shows the account balance and soon it will show the Activity of the account.</p>
+
+<p>Also, it is where I placed the Navigation using a floating action button (component provided by <a href="https://callstack.github.io/react-native-paper/fab-group.html">React Native Paper</a>)</p>
+
+<div class="content-image">
+  <p><img src="/building-a-solana-wallet-cross-platform-app-with-expo-web3-and-react-native/dashboard-3355a428.png" alt="" /></p>
+</div>
+
+<p>Get account balance with web3:</p>
+
+<div class="highlight"><pre class="highlight javascript"><code><span class="kd">const</span> <span class="nx">getBalance</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">publicKey</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">connection</span> <span class="o">=</span> <span class="nx">createConnection</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">_publicKey</span> <span class="o">=</span> <span class="nx">publicKeyFromString</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">lamports</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">connection</span><span class="p">.</span><span class="nx">getBalance</span><span class="p">(</span><span class="nx">_publicKey</span><span class="p">).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">`Error: </span><span class="p">${</span><span class="nx">err</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="kd">const</span> <span class="nx">sol</span> <span class="o">=</span> <span class="nx">lamports</span> <span class="o">/</span> <span class="nx">LAMPORTS_PER_SOL</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">sol</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<h3 id="receive">Receive</h3>
+
+<p>This screen shows the address and a qr to make easier receive tokens.</p>
+
+<div class="content-image">
+  <p><img src="/building-a-solana-wallet-cross-platform-app-with-expo-web3-and-react-native/receive-f0315e76.png" alt="" /></p>
+</div>
+
+<h3 id="send">Send</h3>
+
+<p>This screen allows you to send tokens to other accounts typing the address or scanning a qr code.</p>
+
+<p>Also, this screen shows the current price of SOL, SOL available in the account and convert the introduced amount to USD.</p>
+
+<p>Validations are pending!</p>
+
+<div class="content-image">
+  <p><img src="/building-a-solana-wallet-cross-platform-app-with-expo-web3-and-react-native/send-43b69182.png" alt="" /></p>
+</div>
+
+<p>Create transaction with web3:</p>
+
+<div class="highlight"><pre class="highlight javascript"><code><span class="kd">const</span> <span class="nx">transaction</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="k">from</span><span class="p">,</span> <span class="nx">to</span><span class="p">,</span> <span class="nx">amount</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">account</span> <span class="o">=</span> <span class="nx">accountFromSeed</span><span class="p">(</span><span class="k">from</span><span class="p">.</span><span class="nx">seed</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Executing transaction...</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">amount</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">transaction</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">solanaWeb3</span><span class="p">.</span><span class="nx">Transaction</span><span class="p">().</span><span class="nx">add</span><span class="p">(</span>
+    <span class="nx">solanaWeb3</span><span class="p">.</span><span class="nx">SystemProgram</span><span class="p">.</span><span class="nx">transfer</span><span class="p">({</span>
+      <span class="na">fromPubkey</span><span class="p">:</span> <span class="nx">publicKeyFromString</span><span class="p">(</span><span class="k">from</span><span class="p">.</span><span class="nx">account</span><span class="p">),</span>
+      <span class="na">toPubkey</span><span class="p">:</span> <span class="nx">publicKeyFromString</span><span class="p">(</span><span class="nx">to</span><span class="p">),</span>
+      <span class="na">lamports</span><span class="p">:</span> <span class="nx">amount</span> <span class="o">*</span> <span class="nx">LAMPORTS_PER_SOL</span><span class="p">,</span>
+    <span class="p">})</span>
+  <span class="p">);</span>
+
+  <span class="c1">// Sign transaction, broadcast, and confirm</span>
+  <span class="kd">const</span> <span class="nx">connection</span> <span class="o">=</span> <span class="nx">createConnection</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">signature</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">solanaWeb3</span><span class="p">.</span><span class="nx">sendAndConfirmTransaction</span><span class="p">(</span>
+    <span class="nx">connection</span><span class="p">,</span>
+    <span class="nx">transaction</span><span class="p">,</span>
+    <span class="p">[</span><span class="nx">account</span><span class="p">]</span>
+  <span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">SIGNATURE</span><span class="dl">"</span><span class="p">,</span> <span class="nx">signature</span><span class="p">);</span>
+<span class="p">};</span>
+
+</code></pre></div>
+<p>Get Solana price using <a href="https://www.coingecko.com">Coingecko</a> API:</p>
+
+<div class="highlight"><pre class="highlight javascript"><code><span class="kd">const</span> <span class="nx">getSolanaPrice</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span>
+    <span class="s2">`https://api.coingecko.com/api/v3/simple/price?ids=solana&amp;vs_currencies=usd`</span><span class="p">,</span>
+    <span class="p">{</span>
+      <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+  <span class="k">return</span> <span class="nx">data</span><span class="p">.</span><span class="nx">solana</span><span class="p">.</span><span class="nx">usd</span><span class="p">;</span>
+<span class="p">};</span>
+
+</code></pre></div>
+<h3 id="settings">Settings</h3>
+
+<p>This screen shows two options:</p>
+
+<div class="content-image">
+  <p><img src="/building-a-solana-wallet-cross-platform-app-with-expo-web3-and-react-native/settings-c2f36be5.png" alt="" /></p>
+</div>
+
+<h4 id="backup">Backup</h4>
+
+<p>To access to recovery phrase. Before ask for passcode.</p>
+
+<h4 id="request-airdrop">Request Airdrop</h4>
+
+<p>This app is configured to connect to dev network so the tokens showed are not real.</p>
+
+<p>Good thing is that every time you press here you get 1 SOL in your account that can be used to test the app, make transfers…</p>
+
+<p>Request an Airdrop in dev mode with web3:</p>
+
+<div class="highlight"><pre class="highlight javascript"><code><span class="kd">const</span> <span class="nx">requestAirDrop</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">publicKeyString</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">connection</span> <span class="o">=</span> <span class="nx">createConnection</span><span class="p">();</span>
+
+  <span class="kd">const</span> <span class="nx">airdropSignature</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">connection</span><span class="p">.</span><span class="nx">requestAirdrop</span><span class="p">(</span>
+    <span class="nx">publicKeyFromString</span><span class="p">(</span><span class="nx">publicKeyString</span><span class="p">),</span>
+    <span class="nx">LAMPORTS_PER_SOL</span>
+  <span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">signature</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">connection</span><span class="p">.</span><span class="nx">confirmTransaction</span><span class="p">(</span><span class="nx">airdropSignature</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">signature</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<h2 id="what-i-used-to-build-this-solana-wallet">What I used to build this Solana Wallet</h2>
+
+<h3 id="expo">Expo</h3>
+<p>Expo is an open-source platform for making universal native apps for Android, iOS, and the web with JavaScript and React.
+ - <a href="https://expo.io/">Expo</a></p>
+
+<h3 id="solanaweb3js">Solana/web3.js</h3>
+<p>This is the Solana Javascript API built on the Solana JSON RPC API.
+ - <a href="https://solana-labs.github.io/solana-web3.js/">Solana/web3.js</a></p>
+
+<h3 id="easy-peasy">Easy Peasy</h3>
+<p>Vegetarian friendly state for React.
+ - <a href="https://easy-peasy.vercel.app/">Easy Peasy</a></p>
+
+<h3 id="react-native-paper">React Native Paper</h3>
+<p>Paper is a collection of customizable and production-ready components for React Native, following Google’s Material Design guidelines.
+ - <a href="https://callstack.github.io/react-native-paper/">React Native Paper</a></p>
+
+<h3 id="react-navigation">React Navigation</h3>
+<p>Routing and navigation for Expo and React Native apps.
+ - <a href="https://reactnavigation.org/">React Navigation</a></p>
+
+<h3 id="more">More</h3>
+
+<p>Moreover I used other libraries for crypto, qr generate and scan…</p>
+
+<p>You can check them in <a href="https://github.com/jferrer/expo-solana-wallet/blob/main/package.json">package.json</a></p>
+
+<h2 id="problems-that-i-found-and-workarounds-to-solve-them">Problems that I found and workarounds to solve them</h2>
+
+<h3 id="crypto-dependency">Crypto dependency</h3>
+
+<p><code>solana/web3.js</code> needs <code>Crypto</code> that it seems that now it’s included in NodeJS but no in React Native and although I found some ways to have it working in React Native I didn’t find a way to do it without ejecting the app from Expo.</p>
+
+<p>Finally I found a workaround that basically uses <code>ethers.js</code> and <code>expo-random</code> to be able to generate mnemonic and seed. Later, I was able to use <code>solana/web3.js</code> without issues to connect to the network, get balance, transfer…</p>
+
+<div class="highlight"><pre class="highlight javascript"><code><span class="kd">const</span> <span class="nx">generateMnemonic</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">randomBytes</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Random</span><span class="p">.</span><span class="nx">getRandomBytesAsync</span><span class="p">(</span><span class="mi">32</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">mnemonic</span> <span class="o">=</span> <span class="nx">ethers</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">entropyToMnemonic</span><span class="p">(</span><span class="nx">randomBytes</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">mnemonic</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">mnemonicToSeed</span> <span class="o">=</span> <span class="p">(</span><span class="nx">mnemonic</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">seed</span> <span class="o">=</span> <span class="nx">ethers</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">mnemonicToSeed</span><span class="p">(</span><span class="nx">mnemonic</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">seed</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">accountFromSeed</span> <span class="o">=</span> <span class="p">(</span><span class="nx">seed</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">hex</span> <span class="o">=</span> <span class="nb">Uint8Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">Buffer</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">seed</span><span class="p">));</span>
+  <span class="kd">const</span> <span class="nx">keyPair</span> <span class="o">=</span> <span class="nx">nacl</span><span class="p">.</span><span class="nx">sign</span><span class="p">.</span><span class="nx">keyPair</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="nx">hex</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">32</span><span class="p">));</span>
+  <span class="kd">const</span> <span class="nx">account</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">solanaWeb3</span><span class="p">.</span><span class="nx">Account</span><span class="p">(</span><span class="nx">keyPair</span><span class="p">.</span><span class="nx">secretKey</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">account</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<h3 id="metro-has-encountered-an-error-trying-to-resolve-module-superstruct">Metro has encountered an error trying to resolve module ‘superstruct’</h3>
+
+<p>Here the problem seems to be that the package entrypoint is a CommmonJS file. To solve it I added <code>.cjs</code> files to <code>metro.config.js</code></p>
+
+<div class="highlight"><pre class="highlight javascript"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">resolver</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">sourceExts</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">jsx</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">js</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ts</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">tsx</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">cjs</span><span class="dl">"</span><span class="p">],</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div>
+<h3 id="some-rn-http-methods-have-no-implementation-and-i-dont-know-why-">Some RN http methods have no implementation and I don’t know why :(</h3>
+
+<p>Need to do a very weird thing after every <code>yarn</code> execution and find a better solution.</p>
+
+<h2 id="whats-next">What’s next</h2>
+
+<ul>
+  <li>Continue cleaning the code and remove packages that I’m not using anymore.</li>
+  <li>Design doesn’t adjust well. I used a <a href="https://www.freepik.com/free-vector/retro-futuristic-landscape-background-with-sun_5072269.htm#page=1&amp;query=sun%20future&amp;position=12">Background</a> only to see it nice when I was building.</li>
+  <li>Give option to connect to Mainnet.</li>
+  <li>Let the option to generate derived accounts, encrypt seed phrase…</li>
+  <li>Integration with <a href="https://projectserum.com/#/">Serum</a> for Swaps.</li>
+  <li>Run as Browser Extension.</li>
+</ul>
+
+<h2 id="final">Final</h2>
+<p>My goal with this was to learn the Web3 basics building something simple and sharing 100% of the code between Web and Native.</p>
+
+<p>I think it has been a good introduction to see how Web3 works.</p>
+
+<p>If you think that it can be useful for you I published the repo <a href="https://github.com/jferrer/expo-solana-wallet">here</a>.</p>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span>git clone https://github.com/jferrer/expo-solana-wallet.git
+<span class="nv">$ </span><span class="nb">cd </span>expo-solana wallet
+<span class="nv">$ </span>yarn <span class="nb">install</span>
+<span class="nv">$ </span>expo web or expo start
+</code></pre></div>
+
+
+            <p class="has-text-centered mt-6">
+              <a href="https://twitter.com/moviendo_me" target="_blank">
+                <img src="/images/icons/twitter-c245de86.svg" width="30px" alt="" />
+              </a>
+            </p>
+
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+  <div class="content has-text-centered">
+    <p class="has-text-centered mt-6">
+      <a href="https://github.com/jferrer/moviendo.me">
+        <image src="https://github.com/jferrer/moviendo.me/workflows/build/badge.svg" width="104px" />
+      </a>
+      <br />
+      <span class="is-size-7">
+        Built with <a href="https://middlemanapp.com/">Middleman</a> &
+        <a href="https://github.com/features/actions">Github Actions</a>
+      </span>
+    </p>
+
+  </div>
+</footer>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RW0G8H6JG9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RW0G8H6JG9');
+</script>
+
+  </body>
+</html>
