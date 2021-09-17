@@ -278,10 +278,21 @@
   <span class="p">},</span>
 <span class="p">};</span>
 </code></pre></div>
-<h3 id="some-rn-http-methods-have-no-implementation-and-i-dont-know-why-">Some RN http methods have no implementation and I don’t know why :(</h3>
+<h3 id="some-rn-url-methods-have-no-implementation">Some RN URL methods have no implementation</h3>
 
-<p>Need to do a very weird thing after every <code>yarn</code> execution and find a better solution.</p>
+<p>React Native <code>react-native/Libraries/Blob/URL.js</code> has no implementation for some methods.</p>
 
+<p>Before, I was changing the 2 methods (<code>protocol</code> and <code>port</code>) manually but every time that I run <code>yarn</code> back to normal.</p>
+
+<p>After a bit of research it seems that RN doesn’t include this because the full implementation will increase a lot the size of the bundle but can be solved adding <code>react-native-url-polyfill</code> package.</p>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span>yarn add react-native-url-polyfill
+</code></pre></div>
+<div class="highlight"><pre class="highlight javascript"><code><span class="err">#</span> <span class="nx">App</span><span class="p">.</span><span class="nx">tsx</span>
+<span class="p">...</span>
+<span class="k">import</span> <span class="dl">"</span><span class="s2">react-native-url-polyfill/auto</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">...</span>
+</code></pre></div>
 <h2 id="whats-next">What’s next</h2>
 
 <ul>
