@@ -1,0 +1,276 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="profile" href="https://gmpg.org/xfn/11">
+<title>Derivation Path and Multiple Accounts from same Seed - Building a Solana Open Source Cross-Platform Wallet App - moviendo.me</title>
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+/>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+<link href="/site-f3e81479.css" rel="stylesheet" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@moviendo_me" />
+<meta name="twitter:creator" content="@moviendo_me" />
+<meta property="og:url" content="https://moviendo.me/posts/solana-wallet-derivation-path-and-multiple-accounts.html" />
+<meta property="og:title" content="Derivation Path and Multiple Accounts from same Seed - Building a Solana Open Source Cross-Platform Wallet App" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://moviendo.me/solana-wallet-derivation-path-and-multiple-accounts/accounts.png" />
+
+  </head>
+  <body>
+    <div class="container mt-5">
+  <div class="content">
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+<a href="/">            <img src="/images/moviendome-c8e84528.png" width="80px" alt="" />
+</a>        </div>
+      </div>
+
+      <div class="level-right">
+        <p class="level-item is-size-7 has-text-centered">
+          A Developer, Author, Creator and Blogger based in Thailand
+        </p>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+    <section class="section">
+      <div class="container">
+        <div class="content is-medium">
+          <h6 class="subtitle is-6 is-uppercase"><time>Sep 21, 2021</time></h6>
+          <div class="tags">
+              <span class="tag is-light is-uppercase">development</span>
+              <span class="tag is-light is-uppercase">react native</span>
+              <span class="tag is-light is-uppercase">expo</span>
+              <span class="tag is-light is-uppercase">web3</span>
+              <span class="tag is-light is-uppercase">solana</span>
+          </div>
+          <h1>Derivation Path and Multiple Accounts from same Seed - Building a Solana Open Source Cross-Platform Wallet App</h1>
+          <div class="content-image">
+  <p><img src="/solana-wallet-derivation-path-and-multiple-accounts/accounts-20bc7101.png" alt="" /></p>
+</div>
+
+<p>These days I’ve been reading and learning about how other Wallet Apps generate the accounts.</p>
+
+<p>I noticed that there is something called <strong>Derivation Path</strong>.</p>
+
+<h2 id="what-is-derivation-path">What is Derivation Path</h2>
+
+<p>Derivation Paths are used in Wallets where you have a single, human readable, seed phrase that manages different accounts.</p>
+
+<p>This allows to generate addresses by taking the seed and combining it with a derivation path and making possible to generate random accounts that depends of the same seed/phrase.</p>
+
+<h2 id="how-derivation-path-works">How Derivation Path Works</h2>
+
+<p>This is how a Derivation Path looks like:</p>
+
+<div class="highlight"><pre class="highlight shell"><code>m/purpose/coin_type/account/change/address_index
+</code></pre></div>
+<h3 id="purpose">44’ (purpose)</h3>
+
+<p>The current HD key system.</p>
+
+<h3 id="coin-type">501’ (coin type)</h3>
+
+<p>Each blockchain has a number to represent it. Bitcoin is <code>0</code>, Ethereum is <code>60</code> and Solana is <code>501</code>.</p>
+
+<p>More: <a href="https://github.com/satoshilabs/slips/blob/master/slip-0044.md">https://github.com/satoshilabs/slips/blob/master/slip-0044.md</a></p>
+
+<h3 id="account">0’ (account)</h3>
+
+<p>This could be used to have, for example: personal, business…</p>
+
+<p>Starts at 0 and increases.</p>
+
+<h3 id="change">0’ (change)</h3>
+
+<p>It seems that it was created for Bitcoin so, I’m not using.</p>
+
+<h3 id="addressindex">0’ (address_index)</h3>
+
+<p>The index of the address.</p>
+
+<h2 id="how-this-works-with-examples">How this works with examples</h2>
+
+<p>Given this, we can separate personal holdings from company ones. For example:</p>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="c"># company</span>
+m/44<span class="s1">'/501'</span>/0<span class="s1">'/0'</span>
+
+<span class="c"># personal</span>
+m/44<span class="s1">'/501'</span>/1<span class="s1">'/0'</span>
+</code></pre></div>
+<p>In the same way, we could separate personal holdings in different addresses:</p>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="c"># savings</span>
+m/44<span class="s1">'/501'</span>/1<span class="s1">'/0'</span>
+
+<span class="c"># paychecks</span>
+m/44<span class="s1">'/501'</span>/1<span class="s1">'/1'</span>
+
+<span class="c"># donations</span>
+m/44<span class="s1">'/501'</span>/1<span class="s1">'/2'</span>
+</code></pre></div>
+<h2 id="how-i-implemented-derivations-paths-in-my-wallet-app-to-manage-different-accounts">How I implemented Derivations Paths in my Wallet App to manage different accounts</h2>
+
+<p>First, I’ve made some changes in the <code>Store</code> because after studying this it didn’t make sense to save some fields.</p>
+
+<p>So, <code>Store</code> now looks like this:</p>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="nb">export </span>interface Wallet <span class="o">{</span>
+  passcode: number<span class="p">;</span>
+  mnemonic: string[]<span class="p">;</span>
+  seed: string<span class="p">;</span>
+<span class="o">}</span>
+</code></pre></div>
+<div class="highlight"><pre class="highlight shell"><code><span class="nb">export </span>interface Account <span class="o">{</span>
+  index: number<span class="p">;</span>
+  title: string<span class="p">;</span>
+  derivationPath: string<span class="p">;</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>It seems that I don’t need to save more details because I can generate always the same Keypair for the given account:</p>
+
+<div class="highlight"><pre class="highlight javascript"><code><span class="kd">const</span> <span class="nx">accountFromSeed</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="nx">seed</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+  <span class="nx">walletIndex</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span>
+  <span class="nx">derivationPath</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+  <span class="nx">accountIndex</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">derivedSeed</span> <span class="o">=</span> <span class="nx">deriveSeed</span><span class="p">(</span>
+    <span class="nx">seed</span><span class="p">,</span>
+    <span class="nx">walletIndex</span><span class="p">,</span>
+    <span class="nx">derivationPath</span><span class="p">,</span>
+    <span class="nx">accountIndex</span>
+  <span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">keyPair</span> <span class="o">=</span> <span class="nx">nacl</span><span class="p">.</span><span class="nx">sign</span><span class="p">.</span><span class="nx">keyPair</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="nx">derivedSeed</span><span class="p">);</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nx">solanaWeb3</span><span class="p">.</span><span class="nx">Account</span><span class="p">(</span><span class="nx">keyPair</span><span class="p">.</span><span class="nx">secretKey</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Last, this is how the Seed is derived:</p>
+
+<div class="highlight"><pre class="highlight javascript"><code><span class="kd">const</span> <span class="nx">deriveSeed</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="nx">seed</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+  <span class="nx">walletIndex</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span>
+  <span class="nx">derivationPath</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+  <span class="nx">accountIndex</span><span class="p">:</span> <span class="nx">number</span>
+<span class="p">):</span> <span class="nx">Buffer</span> <span class="o">|</span> <span class="kc">undefined</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">path44Change</span> <span class="o">=</span> <span class="s2">`m/44'/501'/</span><span class="p">${</span><span class="nx">walletIndex</span><span class="p">}</span><span class="s2">'/0'`</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">ed25519</span><span class="p">.</span><span class="nx">derivePath</span><span class="p">(</span><span class="nx">path44Change</span><span class="p">,</span> <span class="nx">seed</span><span class="p">).</span><span class="nx">key</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Derivation Path is hardcoded ATM while thinking what to do but functions are ready. I saw that other Wallets support older Derivations Paths. <a href="https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki">BIP-44</a> seems to be the last.</p>
+
+<p>Before there was other like: <a href="https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki">BIP-39</a> or <a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki">BIP-32</a>.</p>
+
+<h3 id="ed25519-hd-key-package-and-the-issues-to-have-it-working-in-react-native">ed25519-hd-key package and the issues to have it working in React Native</h3>
+
+<p>The package to derivate the paths is <a href="https://www.npmjs.com/package/ed25519-hd-key">ed25519-hd-key</a>.</p>
+
+<p>Implementation for Web was very straightforward as I showed in the code before but again, and because some dependencies not included in React Native, I’ve had to find a way to have it working in Native.</p>
+
+<p>First, it couldn’t find <code>stream</code>. I don’t know if it’s the best solution but I found that adding a new resolver in <code>metro.config.js</code> to <code>readable-stream</code> package works cross-platform.</p>
+
+<div class="highlight"><pre class="highlight javascript"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">resolver</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">sourceExts</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">jsx</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">js</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ts</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">tsx</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">cjs</span><span class="dl">"</span><span class="p">],</span>
+    <span class="na">extraNodeModules</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">stream</span><span class="p">:</span> <span class="nx">require</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="dl">"</span><span class="s2">readable-stream</span><span class="dl">"</span><span class="p">),</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Later, it couldn’t find <code>buffer</code>. I found <a href="https://stackoverflow.com/a/49591831">this in Stackoverflow</a> to inject Node globals into React Native. Again, I don’t know if there is a better way to do it but it works in both: Web &amp; Native.</p>
+
+<p>So, I created a <code>global.js</code> empty, for web. And a <code>global.native.js</code> with this:</p>
+
+<div class="highlight"><pre class="highlight javascript"><code><span class="c1">// Inject node globals into React Native global scope.</span>
+
+<span class="nb">global</span><span class="p">.</span><span class="nx">Buffer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">buffer</span><span class="dl">"</span><span class="p">).</span><span class="nx">Buffer</span><span class="p">;</span>
+<span class="nb">global</span><span class="p">.</span><span class="nx">Buffer</span><span class="p">.</span><span class="nx">TYPED_ARRAY_SUPPORT</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+<span class="nb">global</span><span class="p">.</span><span class="nx">process</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">process</span><span class="dl">"</span><span class="p">);</span>
+<span class="nb">global</span><span class="p">.</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">=</span> <span class="nx">__DEV__</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">development</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">production</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="c1">// Needed so that 'stream-http' chooses the right default protocol.</span>
+<span class="nb">global</span><span class="p">.</span><span class="nx">location</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">protocol</span><span class="p">:</span> <span class="dl">"</span><span class="s2">file:</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Doing 2 separate files, I don’t have to worry when I import it in the main file of the App and inyection only happens in React Native., <code>App.tsx</code>:</p>
+
+<div class="highlight"><pre class="highlight javascript"><code><span class="p">...</span>
+<span class="k">import</span> <span class="dl">"</span><span class="s2">./global</span><span class="dl">"</span>
+<span class="p">...</span>
+</code></pre></div>
+<p>And that’s all! Prototype is working. Now, after set a pin code, the App creates two different accounts: default &amp; donations and it’s possible to change between them pressing directly on the title of the account in every screen.</p>
+
+<p>Improve design is pending and also give the option to the user to create more accounts, delete…</p>
+
+<p><a href="https://github.com/jferrer/expo-solana-wallet">Full code</a> is on Github and this is the <a href="https://github.com/jferrer/expo-solana-wallet/commit/bca3ee7e226324775eb5b2b5e070f11531669235">specific commit</a>.</p>
+
+
+
+            <div class="has-text-centered mt-6">
+              <a href="https://twitter.com/moviendo_me" target="_blank">
+                <img src="/images/icons/twitter-c245de86.svg" width="30px" alt="" />
+              </a>
+            </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="hero has-background is-medium is-link">
+      <img class="hero-background is-transparent" src="https://moviendo.me/building-a-solana-wallet-cross-platform-app-with-expo-web3-and-react-native/solana-wallet-app-d4a8563f.jpg" />
+      <div class="hero-body">
+        <p class="title has-text-centered">
+          Building in Public an Open Source Solana Wallet Cross-Platform App with Expo, Web3 & React Native
+        </p>
+        <p class="has-text-centered mt-6">
+          <a class="button is-medium is-inverted is-uppercase" href="/building-in-public-an-open-source-solana-wallet-cross-platform-app-with-expo-web3-react-native/index.html">Follow</a>
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+  <div class="content has-text-centered">
+    <p class="has-text-centered mt-6">
+      <a href="https://github.com/jferrer/moviendo.me">
+        <image src="https://github.com/jferrer/moviendo.me/workflows/build/badge.svg" width="104px" />
+      </a>
+      <br />
+      <span class="is-size-7">
+        Built with <a href="https://middlemanapp.com/">Middleman</a> &
+        <a href="https://github.com/features/actions">Github Actions</a>
+      </span>
+    </p>
+
+  </div>
+</footer>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RW0G8H6JG9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RW0G8H6JG9');
+</script>
+
+  </body>
+</html>
