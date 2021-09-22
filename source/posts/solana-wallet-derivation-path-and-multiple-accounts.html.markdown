@@ -3,7 +3,7 @@
 title: Derivation Path and Multiple Accounts from same Seed - Building a Solana Open Source Cross-Platform Wallet App
 date: 2021-09-21 00:01 UTC
 tags: development, react native, expo, web3, solana
-cover: solana-wallet-derivation-path-and-multiple-accounts/accounts.png
+cover: solana-wallet-derivation-path-and-multiple-accounts/accounts-20bc7101.png
 
 ---
 
