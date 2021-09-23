@@ -256,9 +256,10 @@
   <span class="k">return</span> <span class="nx">mnemonic</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="kd">const</span> <span class="nx">mnemonicToSeed</span> <span class="o">=</span> <span class="p">(</span><span class="nx">mnemonic</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">seed</span> <span class="o">=</span> <span class="nx">ethers</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">mnemonicToSeed</span><span class="p">(</span><span class="nx">mnemonic</span><span class="p">);</span>
-  <span class="k">return</span> <span class="nx">seed</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">mnemonicToSeed</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">mnemonic</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+   <span class="kd">const</span> <span class="nx">bip39</span> <span class="o">=</span> <span class="k">await</span> <span class="k">import</span><span class="p">(</span><span class="dl">"</span><span class="s2">bip39</span><span class="dl">"</span><span class="p">);</span>
+   <span class="kd">const</span> <span class="nx">seed</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bip39</span><span class="p">.</span><span class="nx">mnemonicToSeed</span><span class="p">(</span><span class="nx">mnemonic</span><span class="p">);</span>
+   <span class="k">return</span> <span class="nx">Buffer</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">seed</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="dl">"</span><span class="s2">hex</span><span class="dl">"</span><span class="p">);</span>
 <span class="p">};</span>
 
 <span class="kd">const</span> <span class="nx">accountFromSeed</span> <span class="o">=</span> <span class="p">(</span><span class="nx">seed</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>

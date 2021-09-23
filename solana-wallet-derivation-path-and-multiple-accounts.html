@@ -170,7 +170,7 @@ m/44<span class="s1">'/501'</span>/1<span class="s1">'/2'</span>
   <span class="nx">accountIndex</span><span class="p">:</span> <span class="nx">number</span>
 <span class="p">):</span> <span class="nx">Buffer</span> <span class="o">|</span> <span class="kc">undefined</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">path44Change</span> <span class="o">=</span> <span class="s2">`m/44'/501'/</span><span class="p">${</span><span class="nx">walletIndex</span><span class="p">}</span><span class="s2">'/0'`</span><span class="p">;</span>
-  <span class="k">return</span> <span class="nx">ed25519</span><span class="p">.</span><span class="nx">derivePath</span><span class="p">(</span><span class="nx">path44Change</span><span class="p">,</span> <span class="nx">seed</span><span class="p">).</span><span class="nx">key</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">ed25519</span><span class="p">.</span><span class="nx">derivePath</span><span class="p">(</span><span class="nx">path44Change</span><span class="p">,</span> <span class="nx">Buffer</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">seed</span><span class="p">,</span> <span class="dl">"</span><span class="s2">hex</span><span class="dl">"</span><span class="p">)).</span><span class="nx">key</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
 <p>Derivation Path is hardcoded ATM while thinking what to do but functions are ready. I saw that other Wallets support older Derivations Paths. <a href="https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki">BIP-44</a> seems to be the last.</p>
