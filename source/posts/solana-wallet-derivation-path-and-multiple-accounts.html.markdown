@@ -133,7 +133,7 @@ const deriveSeed = (
   accountIndex: number
 ): Buffer | undefined => {
   const path44Change = `m/44'/501'/${walletIndex}'/0'`;
-  return ed25519.derivePath(path44Change, seed).key;
+  return ed25519.derivePath(path44Change, Buffer.from(seed, "hex")).key;
 };
 ~~~
 

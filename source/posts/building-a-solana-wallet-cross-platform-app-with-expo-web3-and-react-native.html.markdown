@@ -216,9 +216,10 @@ const generateMnemonic = async () => {
   return mnemonic;
 };
 
-const mnemonicToSeed = (mnemonic: string) => {
-  const seed = ethers.utils.mnemonicToSeed(mnemonic);
-  return seed;
+const mnemonicToSeed = async (mnemonic: string) => {
+   const bip39 = await import("bip39");
+   const seed = await bip39.mnemonicToSeed(mnemonic);
+   return Buffer.from(seed).toString("hex");
 };
 
 const accountFromSeed = (seed: string) => {
