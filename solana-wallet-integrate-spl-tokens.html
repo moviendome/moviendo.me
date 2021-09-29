@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="profile" href="https://gmpg.org/xfn/11">
+<title>Integrate SPL Tokens - Building a Solana Open Source Cross-Platform Wallet App - moviendo.me</title>
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+/>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+<link href="/site-f3e81479.css" rel="stylesheet" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@moviendo_me" />
+<meta name="twitter:creator" content="@moviendo_me" />
+<meta property="og:url" content="https://moviendo.me/posts/solana-wallet-integrate-spl-tokens.html" />
+<meta property="og:title" content="Integrate SPL Tokens - Building a Solana Open Source Cross-Platform Wallet App" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://moviendo.me/solana-wallet-integrate-spl-tokens/spl-token.png" />
+
+  </head>
+  <body>
+    <div class="container mt-5">
+  <div class="content">
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+<a href="/">            <img src="/images/moviendome-c8e84528.png" width="80px" alt="" />
+</a>        </div>
+      </div>
+
+      <div class="level-right">
+        <p class="level-item is-size-7 has-text-centered">
+          A Developer, Author, Creator and Blogger based in Thailand
+        </p>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+    <section class="section">
+      <div class="container">
+        <div class="content is-medium">
+          <h6 class="subtitle is-6 is-uppercase"><time>Sep 28, 2021</time></h6>
+          <div class="tags">
+              <span class="tag is-light is-uppercase">development</span>
+              <span class="tag is-light is-uppercase">react native</span>
+              <span class="tag is-light is-uppercase">expo</span>
+              <span class="tag is-light is-uppercase">web3</span>
+              <span class="tag is-light is-uppercase">solana</span>
+          </div>
+          <h1>Integrate SPL Tokens - Building a Solana Open Source Cross-Platform Wallet App</h1>
+          <div class="content-image">
+  <p><img src="/solana-wallet-integrate-spl-tokens/spl-token-91ca2d1f.png" alt="" /></p>
+</div>
+
+<p>Now that the <a href="https://github.com/jferrer/expo-solana-wallet">Wallet App</a> has implemented the basic operations to:</p>
+
+<ul>
+  <li>Create Accounts</li>
+  <li>Get Balances</li>
+  <li>Receive SOL</li>
+  <li>Send SOL</li>
+  <li>Request an Airdrop</li>
+</ul>
+
+<p>It’s the turn of integrate <strong>SPL Tokens</strong>.</p>
+
+<h2 id="what-is-a-spl-token">What is a SPL Token?</h2>
+
+<p>The <strong>Solana Program Library</strong> or <strong>SPL</strong> is the token standard of the <a href="https://spl.solana.com/token">Solana Blockchain</a>, similar to ECR20 on Ethereum.</p>
+
+<p><strong>SPL Tokens</strong> can be traded on <a href="https://projectserum.com/#/">Serum</a>, a <strong>Solana</strong> based decentralized exchange.</p>
+
+<h2 id="token-program">Token Program</h2>
+
+<p>Token Program defines a common implementation for Fungible and Non Fungible Tokens and it’s written in Rust language.</p>
+
+<h3 id="create-a-spl-token">Create a SPL Token</h3>
+
+<p>Basically to create a SPL Token we only need to do:</p>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span>spl-token create-token
+</code></pre></div>
+<p>And token is created!</p>
+
+<div class="highlight"><pre class="highlight shell"><code>Creating token FyUYPbYiEFjC5LG4oYqdBfiA6PwgC78kbVyWAoYkwMTC
+
+Signature: 3HSD2YwV5vVhqq4kvPQKRqcn52dkZQZreUKzR8AuQLJmiuDvwwPTsG7hdLrhhv7QMe6PS38Mx2i6xM9RgQKRnVh8
+</code></pre></div>
+<p>Later, we should use a few commands more to provide supply, mint or transfer to different accounts.</p>
+
+<p>You can find a complete example at Solana <a href="https://spl.solana.com/token">Token Program</a> page.</p>
+
+<h2 id="integrate-spl-tokens-in-our-wallet-app">Integrate SPL Tokens in our Wallet App</h2>
+
+<p>To be able to see this new token on the Wallet App there are a few changes to do:</p>
+
+<p>First, we need to add a new package:</p>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span>yarn add @solana/spl-token
+</code></pre></div>
+<p>If you followed the complete example that I linked before you probably noticed that when transfer a SPL Token to a wallet, an Associated Token account is created:</p>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span>spl-token transfer <span class="nt">--fund-recipient</span> FyUYPbYiEFjC5LG4oYqdBfiA6PwgC78kbVyWAoYkwMTC 20 7q6PYSw2dCYfw74igJtDB4iodhCrGBvUg78TnScK6kZj
+
+Transfer 20 tokens
+  Sender: GjmE9KUtCAxBqkX1ssg8wghAazEmh9EZ8y7aRUzFzyHZ
+  Recipient: 7q6PYSw2dCYfw74igJtDB4iodhCrGBvUg78TnScK6kZj
+  Recipient associated token account: 49Yg872M2qMMTPewboNZn5uzjeyLqFVyQ86p3LbC1C1z
+
+Signature: 4GJ78dsa4cq6zSkNJnHknAZFiMc113BHL33pzyVabyQpxd5iCezUNL5J1FAzrDM6mVwZuJANbGVeBNqzcv76ueJG
+</code></pre></div>
+<p>At this moment in our Wallet we only know our Main account so we need to ask for the associated token account before ask for the Balance.</p>
+
+<div class="highlight"><pre class="highlight javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">PublicKey</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@solana/web3.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">TOKEN_PROGRAM_ID</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@solana/spl-token</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID</span><span class="p">:</span> <span class="nx">PublicKey</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PublicKey</span><span class="p">(</span>
+  <span class="dl">'</span><span class="s1">ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">findAssociatedTokenAddress</span><span class="p">(</span>
+    <span class="nx">walletAddress</span><span class="p">:</span> <span class="nx">PublicKey</span><span class="p">,</span>
+    <span class="nx">tokenMintAddress</span><span class="p">:</span> <span class="nx">PublicKey</span>
+<span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">PublicKey</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="k">await</span> <span class="nx">PublicKey</span><span class="p">.</span><span class="nx">findProgramAddress</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="nx">walletAddress</span><span class="p">.</span><span class="nx">toBuffer</span><span class="p">(),</span>
+            <span class="nx">TOKEN_PROGRAM_ID</span><span class="p">.</span><span class="nx">toBuffer</span><span class="p">(),</span>
+            <span class="nx">tokenMintAddress</span><span class="p">.</span><span class="nx">toBuffer</span><span class="p">(),</span>
+        <span class="p">],</span>
+        <span class="nx">SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID</span>
+    <span class="p">))[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>You can read about here: <a href="https://spl.solana.com/associated-token-account">Associated Token Account Program</a>.</p>
+
+<p>Once, we retrieve the Associated Token Account we can get the balance:</p>
+
+<div class="highlight"><pre class="highlight javascript"><code><span class="kd">const</span> <span class="nx">getTokenBalance</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">publicKey</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">splToken</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">connection</span> <span class="o">=</span> <span class="nx">createConnection</span><span class="p">();</span>
+
+  <span class="kd">const</span> <span class="nx">account</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">findAssociatedTokenAddress</span><span class="p">(</span>
+    <span class="nx">publicKeyFromString</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">),</span>
+    <span class="nx">publicKeyFromString</span><span class="p">(</span><span class="nx">splToken</span><span class="p">)</span>
+  <span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">balance</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">connection</span><span class="p">.</span><span class="nx">getTokenAccountBalance</span><span class="p">(</span>
+    <span class="nx">publicKeyFromString</span><span class="p">(</span><span class="nx">account</span><span class="p">.</span><span class="nx">toString</span><span class="p">())</span>
+  <span class="p">);</span>
+
+  <span class="k">return</span> <span class="nx">balance</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">amount</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Here you can see the <a href="https://github.com/jferrer/expo-solana-wallet/commit/3e4b9d6e7954f1e5d97b469e547b35be3c1ab70f">commit</a> to the repository.</p>
+
+<p>This is a very first and simple implementation that needs some improvements:</p>
+
+<ul>
+  <li>Do some updates to do design of the App</li>
+  <li>Add the possibility to add different tokens</li>
+  <li>Fixes for Mobile because right now I still have some hardcoded code to be able to run it on Expo, because some dependencies not included in React Native</li>
+</ul>
+
+
+
+            <div class="has-text-centered mt-6">
+              <a href="https://twitter.com/moviendo_me" target="_blank">
+                <img src="/images/icons/twitter-c245de86.svg" width="30px" alt="" />
+              </a>
+            </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="hero has-background is-medium is-link">
+      <img class="hero-background is-transparent" src="https://moviendo.me/building-a-solana-wallet-cross-platform-app-with-expo-web3-and-react-native/solana-wallet-app-d4a8563f.jpg" />
+      <div class="hero-body">
+        <p class="title has-text-centered">
+          Building in Public an Open Source Solana Wallet Cross-Platform App with Expo, Web3 & React Native
+        </p>
+        <p class="has-text-centered mt-6">
+          <a class="button is-medium is-inverted is-uppercase" href="/building-in-public-an-open-source-solana-wallet-cross-platform-app-with-expo-web3-react-native/index.html">Follow</a>
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+  <div class="content has-text-centered">
+    <p class="has-text-centered mt-6">
+      <a href="https://github.com/jferrer/moviendo.me">
+        <image src="https://github.com/jferrer/moviendo.me/workflows/build/badge.svg" width="104px" />
+      </a>
+      <br />
+      <span class="is-size-7">
+        Built with <a href="https://middlemanapp.com/">Middleman</a> &
+        <a href="https://github.com/features/actions">Github Actions</a>
+      </span>
+    </p>
+
+  </div>
+</footer>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RW0G8H6JG9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RW0G8H6JG9');
+</script>
+
+  </body>
+</html>
