@@ -25,7 +25,7 @@
 <meta property="og:url" content="https://moviendo.me/posts/solana-wallet-integrate-spl-tokens.html" />
 <meta property="og:title" content="Integrate SPL Tokens - Building a Solana Open Source Cross-Platform Wallet App" />
 <meta property="og:description" content="" />
-<meta property="og:image" content="https://moviendo.me/solana-wallet-integrate-spl-tokens/spl-token.png" />
+<meta property="og:image" content="https://moviendo.me/solana-wallet-integrate-spl-tokens/spl-token-91ca2d1f.png" />
 
   </head>
   <body>
@@ -78,7 +78,7 @@
 
 <h2 id="what-is-a-spl-token">What is a SPL Token?</h2>
 
-<p>The <strong>Solana Program Library</strong> or <strong>SPL</strong> is the token standard of the <a href="https://spl.solana.com/token">Solana Blockchain</a>, similar to ECR20 on Ethereum.</p>
+<p>The <strong>Solana Program Library</strong> or <strong>SPL</strong> is the token standard of the <a href="https://spl.solana.com/token">Solana Blockchain</a>, similar to ERC20 on Ethereum.</p>
 
 <p><strong>SPL Tokens</strong> can be traded on <a href="https://projectserum.com/#/">Serum</a>, a <strong>Solana</strong> based decentralized exchange.</p>
 
@@ -104,7 +104,7 @@ Signature: 3HSD2YwV5vVhqq4kvPQKRqcn52dkZQZreUKzR8AuQLJmiuDvwwPTsG7hdLrhhv7QMe6PS
 
 <h2 id="integrate-spl-tokens-in-our-wallet-app">Integrate SPL Tokens in our Wallet App</h2>
 
-<p>To be able to see this new token on the Wallet App there are a few changes to do:</p>
+<p>To be able to interact with this new token on the Wallet App there are a few changes to do:</p>
 
 <p>First, we need to add a new package:</p>
 
@@ -121,7 +121,7 @@ Transfer 20 tokens
 
 Signature: 4GJ78dsa4cq6zSkNJnHknAZFiMc113BHL33pzyVabyQpxd5iCezUNL5J1FAzrDM6mVwZuJANbGVeBNqzcv76ueJG
 </code></pre></div>
-<p>At this moment in our Wallet we only know our Main account so we need to ask for the associated token account before ask for the Balance.</p>
+<p>At this moment in our Wallet we only know our Main account so we need to ask for the associated token account before get the Balance.</p>
 
 <div class="highlight"><pre class="highlight javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">PublicKey</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@solana/web3.js</span><span class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">TOKEN_PROGRAM_ID</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@solana/spl-token</span><span class="dl">'</span><span class="p">;</span>
@@ -170,7 +170,7 @@ Signature: 4GJ78dsa4cq6zSkNJnHknAZFiMc113BHL33pzyVabyQpxd5iCezUNL5J1FAzrDM6mVwZu
 <ul>
   <li>Do some updates to do design of the App</li>
   <li>Add the possibility to add different tokens</li>
-  <li>Fixes for Mobile because right now I still have some hardcoded code to be able to run it on Expo, because some dependencies not included in React Native</li>
+  <li>Fixes for Mobile. Right now I still have some hardcoded code (in node_modules not pushed yet) to be able to run it on Expo, because some dependencies not included in React Native</li>
 </ul>
 
 
