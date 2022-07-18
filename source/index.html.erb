@@ -4,23 +4,52 @@ pageable: true
 per_page: 20
 ---
 
-<h3 class="has-text-centered">Open Source Projects</h3>
-<div class="columns mb-6">
-  <div class="column has-text-centered">
-    <a href="https://github.com/jferrer/expo-solana-wallet" target="_blank">
-      <%= image_tag "expo-solana-wallet-app.png" %>
-    </a>
-  </div>
-  <div class="column has-text-centered">
-    <a href="https://github.com/jferrer" target="_blank">
-      <%= image_tag "expo-expenses-and-incomes-tracking-app.png" %>
-    </a>
-  </div>
-</div>
+<% highligted = page_articles[0] %>
+  <section class="section">
+    <div class="container">
+      <div class="content is-medium">
+        <h6 class="subtitle is-6 is-uppercase"><time><%= highligted.date.strftime('%b %e, %Y') %></time></h6>
+        <h3><%= highligted.title %></h3>
+
+        <div class="content-image" markdown="1">
+          <%= image_tag('yaowarat-road-chinatown-bangkok/yaowarat-road-chinatown-bangkok.jpg') %>
+        </div>
+
+        <p>
+          Yaowarat Road is the main street of Bangkok's Chinatown
+        </p>
+
+        <div class="notification">
+          <p class="content is-small has-text-centered">
+            <a href="https://goo.gl/maps/V5RcxEkr3kJkFeoj8">
+              Yaowarat Rd, Samphanthawong, Bangkok 10100, Thailand
+            </a>
+          </p>
+        </div>
+
+        <% if highligted.data.ig.present? %>
+          <p class="has-text-centered mt-6">
+            <a href="<%= highligted.data.ig %>" target="_blank">
+              <%= image_tag('icons/instagram.svg', width: '30px') %>
+            </a>
+          </p>
+
+        <% else %>
+
+          <div class="has-text-centered mt-6">
+            <a href="https://twitter.com/moviendo_me" target="_blank">
+              <%= image_tag('icons/twitter.svg', width: '30px') %>
+            </a>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+  </section>
 
 <hr />
 
-<% page_articles.each do |article| %>
+<% page_articles.drop(1).each do |article| %>
   <% unless article.tags.include?("draft") %>
     <div class="post">
       <h6 class="subtitle is-6 is-uppercase"><time><%= article.date.strftime('%b %e, %Y') %></time></h6>

@@ -11,6 +11,10 @@ $link: #000;
 @import 'stylesheets/layout/_all';
 
 body {
+  a {
+    text-decoration: none;
+  }
+
   section {
     &.hero {
       margin-top: 80px;
@@ -40,17 +44,6 @@ body {
 
         h2 {
           margin-top: 40px;
-        }
-
-        p {
-          a {
-            text-decoration: none;
-            border-bottom: gray 0.125em solid;
-          }
-
-          a:hover {
-            border-bottom: black 0.125em solid;
-          }
         }
 
         .highlight,
