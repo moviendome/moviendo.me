@@ -38,6 +38,12 @@ body {
           margin: 20px auto;
         }
 
+        p,
+        ul,
+        pre {
+          font-size: 0.8em;
+        }
+
         ul {
           margin-bottom: 40px;
         }
@@ -62,7 +68,7 @@ body {
 
           p {
             max-width: 800px;
-            margin: 20px auto;
+            margin: 10px auto;
             filter: grayscale(100%);
           }
         }
@@ -75,7 +81,7 @@ body {
 
           p {
             max-width: 800px;
-            margin: 20px auto;
+            margin: 10px auto;
             filter: grayscale(100%);
           }
         }

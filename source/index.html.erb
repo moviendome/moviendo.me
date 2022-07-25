@@ -5,12 +5,11 @@ per_page: 20
 ---
 
 <% highligted = page_articles[0] %>
-  <section class="section">
     <div class="container">
       <div class="content is-medium">
-        <h6 class="subtitle is-6 is-uppercase"><time><%= highligted.date.strftime('%b %e, %Y') %></time></h6>
+        <h6 class="subtitle is-7 is-uppercase"><time><%= highligted.date.strftime('%b %e, %Y') %></time></h6>
         <a href="<%= highligted.url %>">
-          <h3><%= highligted.title %></h3>
+          <h4><%= highligted.title %></h4>
         </a>
 
         <%= highligted.summary %>
@@ -33,14 +32,13 @@ per_page: 20
         <% end %>
       </div>
     </div>
-  </section>
 
 <hr />
 
 <% page_articles.drop(1).each do |article| %>
   <% unless article.tags.include?("draft") %>
     <div class="post">
-      <h6 class="subtitle is-6 is-uppercase"><time><%= article.date.strftime('%b %e, %Y') %></time></h6>
+      <h6 class="subtitle is-7 is-uppercase"><time><%= article.date.strftime('%b %e, %Y') %></time></h6>
 
       <!--
       <div class="tags">
@@ -50,11 +48,11 @@ per_page: 20
       </div>
       -->
 
-      <h3>
+      <h4>
         <a href="<%= article.url %>">
           <%= article.title %>
         </a>
-      </h3>
+      </h4>
       <hr />
     </div>
   <% end %>
