@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="profile" href="https://gmpg.org/xfn/11">
+<title>Docker Swarm Cheatsheet - moviendo.me</title>
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+/>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+<link href="/site-11086f76.css" rel="stylesheet" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@moviendo_me" />
+<meta name="twitter:creator" content="@moviendo_me" />
+<meta property="og:url" content="https://moviendo.me/posts/docker-swarm-cheatsheet.html" />
+<meta property="og:title" content="Docker Swarm Cheatsheet" />
+<meta property="og:description" content="Useful commands for Docker Swarm" />
+<meta property="og:image" content="https://moviendo.me/" />
+
+  </head>
+  <body>
+    <div class="container mt-5">
+  <div class="content">
+    <nav class="level pl-4">
+      <div class="level-left">
+        <div class="level-item">
+<a href="/">            <img src="/images/moviendome-c8e84528.png" width="80px" alt="" />
+</a>        </div>
+      </div>
+
+      <div class="level-right pr-4">
+        <p class="level-item is-size-7 has-text-centered has-text-weight-bold is-uppercase">
+        #learn #build #travel
+        </p>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+    <section class="section">
+      <div class="container">
+        <div class="content is-medium">
+          <h6 class="subtitle is-6 is-uppercase"><time>Nov 28, 2022</time></h6>
+          <div class="tags">
+              <span class="tag is-light is-uppercase">development</span>
+              <span class="tag is-light is-uppercase">cheatsheet</span>
+              <span class="tag is-light is-uppercase">docker swarm</span>
+              <span class="tag is-light is-uppercase">gist</span>
+          </div>
+          <h1>Docker Swarm Cheatsheet</h1>
+          <div class="highlight"><pre class="highlight shell"><code><span class="c"># Init Swarm</span>
+<span class="nv">$ </span>docker swarm init <span class="nt">--advertise-addr</span> &lt;IP address of instance&gt;
+
+<span class="c"># List machines</span>
+<span class="nv">$ </span>docker-machine <span class="nb">ls</span>
+
+<span class="c"># Target Local Docker</span>
+<span class="nv">$ </span><span class="nb">eval</span> <span class="si">$(</span>docker-machine <span class="nb">env</span> <span class="nt">-u</span><span class="si">)</span>
+
+<span class="c"># Target Remote Docker</span>
+<span class="nv">$ </span><span class="nb">eval</span> <span class="si">$(</span>docker-machine <span class="nb">env </span>remote-docker<span class="si">)</span>
+
+<span class="c"># Ssh to Docker instance</span>
+<span class="nv">$ </span>docker-machine ssh local-vm-1
+
+<span class="c"># Build App</span>
+<span class="nv">$ </span>docker build <span class="nt">-f</span> production.Dockerfile <span class="nt">-t</span> myapp <span class="nb">.</span>
+
+<span class="c"># Push image to Docker hub</span>
+<span class="nv">$ </span>docker push myapp
+
+<span class="c"># Deploy stack</span>
+<span class="nv">$ </span>docker stack deploy <span class="nt">-c</span> docker-stack.yml <span class="nt">--with-registry-auth</span> myapp
+
+<span class="c"># Update service</span>
+<span class="nv">$ </span>docker service update <span class="nt">--image</span> myapp_image myapp_stack
+
+<span class="c"># List services</span>
+<span class="nv">$ </span>docker stack services myapp
+<span class="nv">$ </span>docker service <span class="nb">ls</span>
+
+<span class="c"># Logs</span>
+<span class="nv">$ </span>docker service logs <span class="nt">-f</span> myapp
+</code></pre></div>
+
+
+            <p class="has-text-centered mt-6">
+              <a href="https://gist.github.com/jferrer/c0d9c375487ec3d573e56b91c39767ad" target="_blank">
+                <img src="/images/icons/github-ea1f30a5.svg" width="30px" alt="" />
+              </a>
+            </p>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+  <div class="content has-text-centered">
+    <p class="has-text-centered mt-6">
+      <a href="https://github.com/jferrer/moviendo.me">
+        <image src="https://github.com/jferrer/moviendo.me/workflows/build/badge.svg" width="104px" />
+      </a>
+      <br />
+      <span class="is-size-7">
+        Built with <a href="https://middlemanapp.com/">Middleman</a> &
+        <a href="https://github.com/features/actions">Github Actions</a>
+      </span>
+    </p>
+
+  </div>
+</footer>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RW0G8H6JG9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RW0G8H6JG9');
+</script>
+
+  </body>
+</html>

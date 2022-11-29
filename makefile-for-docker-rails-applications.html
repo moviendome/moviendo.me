@@ -6,7 +6,7 @@
 <meta name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="profile" href="https://gmpg.org/xfn/11">
-<title>Yaowarat Road, Chinatown (Bangkok) - moviendo.me</title>
+<title>Makefile for Docker & Ruby on Rails Applications - moviendo.me</title>
 <link rel='dns-prefetch' href='//fonts.googleapis.com' />
 <link
   rel="stylesheet"
@@ -22,9 +22,9 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@moviendo_me" />
 <meta name="twitter:creator" content="@moviendo_me" />
-<meta property="og:url" content="https://moviendo.me/posts/yaowarat-road-chinatown-bangkok.html" />
-<meta property="og:title" content="Yaowarat Road, Chinatown (Bangkok)" />
-<meta property="og:description" content="" />
+<meta property="og:url" content="https://moviendo.me/posts/makefile-for-docker-rails-applications.html" />
+<meta property="og:title" content="Makefile for Docker & Ruby on Rails Applications" />
+<meta property="og:description" content="Simplify development with Makefile to run Docker / Docker Compose commands" />
 <meta property="og:image" content="https://moviendo.me/" />
 
   </head>
@@ -51,29 +51,60 @@
     <section class="section">
       <div class="container">
         <div class="content is-medium">
-          <h6 class="subtitle is-6 is-uppercase"><time>Jul 18, 2022</time></h6>
+          <h6 class="subtitle is-6 is-uppercase"><time>Nov 27, 2022</time></h6>
           <div class="tags">
-              <span class="tag is-light is-uppercase">place</span>
-              <span class="tag is-light is-uppercase">bangkok</span>
-              <span class="tag is-light is-uppercase">chinatown</span>
+              <span class="tag is-light is-uppercase">development</span>
+              <span class="tag is-light is-uppercase">docker</span>
+              <span class="tag is-light is-uppercase">ruby</span>
+              <span class="tag is-light is-uppercase">rails</span>
+              <span class="tag is-light is-uppercase">gist</span>
           </div>
-          <h1>Yaowarat Road, Chinatown (Bangkok)</h1>
-          <div class="content-image">
-  <p><img src="/yaowarat-road-chinatown-bangkok/yaowarat-road-chinatown-bangkok-4656a1b7.jpg" alt="Yaowarat Road, Chinatown - Bangkok" /></p>
-</div>
+          <h1>Makefile for Docker & Ruby on Rails Applications</h1>
+          <div class="highlight"><pre class="highlight shell"><code>build:
+  docker compose build
 
-<div class="notification">
-  <p class="content is-small has-text-centered">
-    <a class="subtitle is-6" href="https://goo.gl/maps/V5RcxEkr3kJkFeoj8" target="_blank">
-      Yaowarat Rd, Samphanthawong, Bangkok 10100 , Thailand
-    </a>
-  </p>
-</div>
+setup:
+  docker compose run <span class="nt">--rm</span> app bin/rails db:setup
 
+up:
+  docker compose up
+
+stop:
+  docker compose stop
+
+restart_db:
+  docker compose run <span class="nt">--rm</span> app bin/rails db:drop
+  docker compose run <span class="nt">--rm</span> app bin/rails db:create
+  docker compose run <span class="nt">--rm</span> app bin/rails db:migrate
+  docker compose run <span class="nt">--rm</span> app bin/rails db:seed
+
+migrate:
+  docker compose <span class="nb">exec </span>app bin/rails db:migrate
+
+rollback:
+  docker compose <span class="nb">exec </span>app bin/rails db:rollback
+
+seed:
+  docker compose <span class="nb">exec </span>app bin/rails db:seed
+
+c:
+  docker compose <span class="nb">exec </span>app bin/rails c
+
+t:
+  docker compose <span class="nb">exec </span>app bin/rails t
+
+routes:
+  docker compose <span class="nb">exec </span>app bin/rails routes
+
+</code></pre></div>
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span>make build
+<span class="nv">$ </span>make setup
+<span class="nv">$ </span>make up
+</code></pre></div>
 
             <p class="has-text-centered mt-6">
-              <a href="https://www.instagram.com/p/CerFTCwhHLj/" target="_blank">
-                <img src="/images/icons/instagram-2f674249.svg" width="30px" alt="" />
+              <a href="https://gist.github.com/jferrer/33ed5b7ff108e383d9380839743a8f45" target="_blank">
+                <img src="/images/icons/github-ea1f30a5.svg" width="30px" alt="" />
               </a>
             </p>
         </div>
