@@ -1,6 +1,6 @@
 ---
 
-title: Koh Samui island (Thailand)
+title: Koh Samui Island (Thailand)
 date: 2022-11-28 7:31 UTC
 tags: place, koh samui, island, thailand
 ig: https://www.instagram.com/p/CQ3DXpqBBRR/

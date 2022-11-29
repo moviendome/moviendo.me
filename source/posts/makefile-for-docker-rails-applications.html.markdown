@@ -1,6 +1,7 @@
 ---
 
-title: Makefile to simplify Docker / Docker Compose commands for Ruby on Rails Applications
+title: Makefile for Docker & Ruby on Rails Applications
+description: Simplify development with Makefile to run Docker / Docker Compose commands
 date: 2022-11-27 13:31 UTC
 tags: development, docker, ruby, rails, gist
 gh: https://gist.github.com/jferrer/33ed5b7ff108e383d9380839743a8f45

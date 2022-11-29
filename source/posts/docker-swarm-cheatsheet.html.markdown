@@ -1,6 +1,7 @@
 ---
 
 title: Docker Swarm Cheatsheet
+description: Useful commands for Docker Swarm
 date: 2022-11-28 9:31 UTC
 tags: development, cheatsheet, docker swarm, gist
 gh: https://gist.github.com/jferrer/c0d9c375487ec3d573e56b91c39767ad
