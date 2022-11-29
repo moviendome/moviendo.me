@@ -4,55 +4,47 @@ pageable: true
 per_page: 20
 ---
 
-<% highligted = page_articles[0] %>
-    <div class="container">
-      <div class="content is-medium">
-        <h6 class="subtitle is-7 is-uppercase"><time><%= highligted.date.strftime('%b %e, %Y') %></time></h6>
-        <a href="<%= highligted.url %>">
-          <h4><%= highligted.title %></h4>
-        </a>
-
-        <%= highligted.summary %>
-
-        <% if highligted.data.ig.present? %>
-          <p class="has-text-centered mt-6">
-            <a href="<%= highligted.data.ig %>" target="_blank">
-              <%= image_tag('icons/instagram.svg', width: '30px') %>
-            </a>
-          </p>
-
-        <% else %>
-
-          <div class="has-text-centered mt-6">
-            <a href="https://twitter.com/moviendo_me" target="_blank">
-              <%= image_tag('icons/twitter.svg', width: '30px') %>
-            </a>
-          </div>
-
-        <% end %>
-      </div>
-    </div>
-
-<hr />
-
-<% page_articles.drop(1).each do |article| %>
+<% page_articles.each do |article| %>
   <% unless article.tags.include?("draft") %>
+
     <div class="post">
       <h6 class="subtitle is-7 is-uppercase"><time><%= article.date.strftime('%b %e, %Y') %></time></h6>
 
-      <!--
       <div class="tags">
         <% article.tags.each do |tag| %>
           <span class="tag is-light is-uppercase"><%= tag %></span>
         <% end %>
       </div>
-      -->
 
-      <h4>
-        <a href="<%= article.url %>">
-          <%= article.title %>
-        </a>
-      </h4>
+      <% if article.data.image.present? %>
+        <p class="highlight">
+          <a href="<%= article.url %>">
+            <%= image_tag(article.data.image) %>
+          </a>
+        </p>
+
+        <% if article.data.ig.present? %>
+          <p class="has-text-centered mt-6">
+            <a href="<%= article.data.ig %>" target="_blank">
+              <%= image_tag('icons/instagram.svg', width: '30px') %>
+            </a>
+          </p>
+
+          <% if article.data.address.present? %>
+            <div class="notification">
+              <p class="content is-small has-text-centered">
+                <strong><%= article.data.title %></strong>
+                <br />
+                <a class="subtitle is-6" href="<%= article.data.address_url %>">
+                  <%= article.data.address %>
+                </a>
+              </p>
+            </div>
+          <% end %>
+        <% end %>
+      <% else %>
+        <h2><a href="<%= article.url %>"><%= article.title %></a></h2>
+      <% end %>
       <hr />
     </div>
   <% end %>
