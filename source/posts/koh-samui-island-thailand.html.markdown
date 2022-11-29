@@ -4,7 +4,7 @@ title: Koh Samui Island (Thailand)
 date: 2022-11-28 7:31 UTC
 tags: place, koh samui, island, thailand
 ig: https://www.instagram.com/p/CQ3DXpqBBRR/
-image: from-the-busy-bangkok-to-the-quiet-ko-samui/ko-samui.jpg
+image: from-the-busy-bangkok-to-the-quiet-ko-samui/ko-samui-5be1ae4d.jpg
 address: Ko Samui, Surat Thani (Thailand)
 address_url: https://goo.gl/maps/7b7JWpwKsi4NqA1v9
 

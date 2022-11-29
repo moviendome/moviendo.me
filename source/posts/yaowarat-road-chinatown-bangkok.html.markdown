@@ -4,7 +4,7 @@ title: Yaowarat Road, Chinatown (Bangkok)
 date: 2022-07-18 7:31 UTC
 tags: place, bangkok, chinatown
 ig: https://www.instagram.com/p/CerFTCwhHLj/
-image: yaowarat-road-chinatown-bangkok/yaowarat-road-chinatown-bangkok.jpg
+image: yaowarat-road-chinatown-bangkok/yaowarat-road-chinatown-bangkok-4656a1b7.jpg
 address: Yaowarat Rd, Samphanthawong, Bangkok 10100 , Thailand
 address_url: https://goo.gl/maps/V5RcxEkr3kJkFeoj8
 
