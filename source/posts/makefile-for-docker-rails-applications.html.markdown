@@ -1,7 +1,7 @@
 ---
 
 title: Makefile to simplify Docker / Docker Compose commands for Ruby on Rails Applications
-date: 2022-11-28 13:31 UTC
+date: 2022-11-27 13:31 UTC
 tags: development, docker, ruby, rails, gist
 gh: https://gist.github.com/jferrer/33ed5b7ff108e383d9380839743a8f45
 ---
@@ -44,9 +44,6 @@ routes:
   docker compose exec app bin/rails routes
 
 ~~~
-
-Examples:
-
 
 ~~~bash
 $ make build
