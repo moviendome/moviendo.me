@@ -11,6 +11,7 @@ $link: #000;
 @import 'stylesheets/layout/_all';
 
 body {
+  font: 100%/1.5 sans-serif;
   a {
     text-decoration: none;
   }
@@ -38,10 +39,14 @@ body {
           margin: 20px auto;
         }
 
-        p,
-        ul,
+        p {
+          font: 100%/1.5 serif;
+        }
+
         pre {
-          font-size: 1em;
+          font-size: 0.6em;
+          background-color: #222;
+          color: white;
         }
 
         ul {

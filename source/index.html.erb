@@ -16,37 +16,16 @@ per_page: 20
           <% end %>
         </div>
 
-        <% if article.data.image.present? %>
-          <p class="highlight">
-            <a href="<%= article.url %>">
-              <%= image_tag(article.data.image) %>
+        <h2><a href="<%= article.url %>"><%= article.title %></a></h2>
+        <p><%= article.summary %></p>
+
+        <% if article.data.ig.present? %>
+          <p class="has-text-centered mt-6">
+            <a href="<%= article.data.ig %>" target="_blank">
+              <%= image_tag('icons/instagram.svg', width: '30px') %>
             </a>
           </p>
-
-          <% if article.data.ig.present? %>
-            <p class="has-text-centered mt-6">
-              <a href="<%= article.data.ig %>" target="_blank">
-                <%= image_tag('icons/instagram.svg', width: '30px') %>
-              </a>
-            </p>
-
-            <% if article.data.address.present? %>
-              <div class="notification">
-                <p class="content is-small has-text-centered">
-                  <strong><%= article.data.title %></strong>
-                  <br />
-                  <a class="subtitle is-6" href="<%= article.data.address_url %>" target="_blank">
-                    <%= article.data.address %>
-                  </a>
-                </p>
-              </div>
-            <% end %>
-          <% end %>
-        <% else %>
-          <h2><a href="<%= article.url %>"><%= article.title %></a></h2>
-          <p><%= article.data.description %></p>
         <% end %>
-        <hr />
       </div>
     <% end %>
   <% end %>
@@ -66,9 +45,3 @@ per_page: 20
   </nav>
 <% end %>
 -->
-
-<div class="has-text-centered mt-6">
-  <a href="https://twitter.com/moviendo_me" target="_blank">
-    <%= image_tag('icons/twitter.svg', width: '30px') %>
-  </a>
-</div>

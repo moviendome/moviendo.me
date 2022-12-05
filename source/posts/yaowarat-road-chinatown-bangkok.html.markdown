@@ -1,6 +1,6 @@
 ---
 
-title: Yaowarat Road, Chinatown (Bangkok)
+title: Yaowarat Road, Chinatown
 date: 2022-07-18 7:31 UTC
 tags: place, bangkok, chinatown
 ig: https://www.instagram.com/p/CerFTCwhHLj/

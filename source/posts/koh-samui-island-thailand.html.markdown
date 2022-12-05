@@ -1,6 +1,6 @@
 ---
 
-title: Koh Samui Island (Thailand)
+title: Koh Samui Island
 date: 2022-11-28 7:31 UTC
 tags: place, koh samui, island, thailand
 ig: https://www.instagram.com/p/CQ3DXpqBBRR/
@@ -17,7 +17,7 @@ address_url: https://goo.gl/maps/7b7JWpwKsi4NqA1v9
 <div class="notification">
   <p class="content is-small has-text-centered">
     <a class="subtitle is-6" href="https://goo.gl/maps/V5RcxEkr3kJkFeoj8" target="_blank">
-      Yaowarat Rd, Samphanthawong, Bangkok 10100 , Thailand
+      Ko Samui, Surat Thani (Thailand)
     </a>
   </p>
 </div>
