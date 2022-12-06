@@ -17,7 +17,7 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
 />
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
-<link href="/site-bfe4298c.css" rel="stylesheet" />
+<link href="/site-1272b81b.css" rel="stylesheet" />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@moviendo_me" />
@@ -41,102 +41,65 @@
     <section class="section">
       <div class="container">
         <div class="content is-medium">
-                <div class="post">
-        <h6 class="subtitle is-7 is-uppercase"><time>Nov 28, 2022</time></h6>
+              <div class="post">
+      <h6 class="subtitle is-7 is-uppercase"><time>Nov 28, 2022</time></h6>
 
-        <div class="tags">
-            <span class="tag is-light is-uppercase">development</span>
-            <span class="tag is-light is-uppercase">cheatsheet</span>
-            <span class="tag is-light is-uppercase">docker swarm</span>
-            <span class="tag is-light is-uppercase">gist</span>
-        </div>
+      <div class="tags">
+          <span class="tag is-light is-uppercase">development</span>
+          <span class="tag is-light is-uppercase">cheatsheet</span>
+          <span class="tag is-light is-uppercase">docker swarm</span>
+          <span class="tag is-light is-uppercase">gist</span>
+      </div>
 
-        <h2><a href="/docker-swarm-cheatsheet.html">Docker Swarm Cheatsheet</a></h2>
-        <p><div class="highlight"><pre class="highlight shell"><code><span class="c"># Init Swarm</span>
+      <h2><a href="/docker-swarm-cheatsheet.html">Docker Swarm Cheatsheet</a></h2>
+      <p><div class="highlight"><pre class="highlight shell"><code><span class="c"># Init Swarm</span>
 <span class="nv">$ </span>docker swarm init <span class="nt">--advertise-addr</span> &lt;IP address of instance&gt;
 
 <span class="c"># List machines</span>
-<span class="nv">$ </span>docker-machine <span class="nb">ls</span>
+<span class="nv">$ </span>docker...</code></pre></div></p>
+      <p class="has-text-centered">
+        <a href="/docker-swarm-cheatsheet.html" class="button is-centered">Read more</a>
+      </p>
 
-<span class="c"># Target Local Docker</span>
-<span class="nv">$ </span><span class="nb">eval</span> <span class="si">$(</span>docker-machine <span class="nb">env</span> <span class="nt">-u</span><span class="si">)</span>
+      <hr />
+    </div>
+    <div class="post">
+      <h6 class="subtitle is-7 is-uppercase"><time>Nov 27, 2022</time></h6>
 
-<span class="c"># Target Remote Docker</span>
-<span class="nv">$ </span><span class="nb">eval</span> <span class="si">$(</span>docker-machine <span class="nb">env </span>remote-docker<span class="si">)</span>
-
-<span class="c"># Ssh to Docker...</span></code></pre></div></p>
-
+      <div class="tags">
+          <span class="tag is-light is-uppercase">development</span>
+          <span class="tag is-light is-uppercase">docker</span>
+          <span class="tag is-light is-uppercase">ruby</span>
+          <span class="tag is-light is-uppercase">rails</span>
+          <span class="tag is-light is-uppercase">gist</span>
       </div>
-      <div class="post">
-        <h6 class="subtitle is-7 is-uppercase"><time>Nov 28, 2022</time></h6>
 
-        <div class="tags">
-            <span class="tag is-light is-uppercase">place</span>
-            <span class="tag is-light is-uppercase">koh samui</span>
-            <span class="tag is-light is-uppercase">island</span>
-            <span class="tag is-light is-uppercase">thailand</span>
-        </div>
-
-        <h2><a href="/koh-samui-island-thailand.html">Koh Samui Island</a></h2>
-        <p><div class="content-image">
-  <p><img src="/from-the-busy-bangkok-to-the-quiet-ko-samui/ko-samui-5be1ae4d.jpg" alt="" /></p>
-</div>
-
-<div class="notification">
-  <p class="content is-small has-text-centered">
-    <a class="subtitle is-6" href="https://goo.gl/maps/V5RcxEkr3kJkFeoj8" target="_blank">
-      Ko Samui, Surat Thani (Thailand)
-    </a>
-  </p>
-</div>
-</p>
-
-          <p class="has-text-centered mt-6">
-            <a href="https://www.instagram.com/p/CQ3DXpqBBRR/" target="_blank">
-              <img src="/images/icons/instagram-2f674249.svg" width="30px" alt="" />
-            </a>
-          </p>
-      </div>
-      <div class="post">
-        <h6 class="subtitle is-7 is-uppercase"><time>Nov 27, 2022</time></h6>
-
-        <div class="tags">
-            <span class="tag is-light is-uppercase">development</span>
-            <span class="tag is-light is-uppercase">docker</span>
-            <span class="tag is-light is-uppercase">ruby</span>
-            <span class="tag is-light is-uppercase">rails</span>
-            <span class="tag is-light is-uppercase">gist</span>
-        </div>
-
-        <h2><a href="/makefile-for-docker-rails-applications.html">Makefile for Docker & Ruby on Rails Applications</a></h2>
-        <p><div class="highlight"><pre class="highlight shell"><code>build:
+      <h2><a href="/makefile-for-docker-rails-applications.html">Makefile for Docker & Ruby on Rails Applications</a></h2>
+      <p><div class="highlight"><pre class="highlight shell"><code>build:
   docker compose build
 
 setup:
   docker compose run <span class="nt">--rm</span> app bin/rails db:setup
 
 up:
-  docker compose up
+  docker...</code></pre></div></p>
+      <p class="has-text-centered">
+        <a href="/makefile-for-docker-rails-applications.html" class="button is-centered">Read more</a>
+      </p>
 
-stop:
-  docker compose stop
+      <hr />
+    </div>
+    <div class="post">
+      <h6 class="subtitle is-7 is-uppercase"><time>Jul 18, 2022</time></h6>
 
-restart_db:
-  docker compose run <span class="nt">--rm</span> app bin/rails db:drop
-  docker compose run <span class="nt">--rm</span> app bin/rails db:create...</code></pre></div></p>
-
+      <div class="tags">
+          <span class="tag is-light is-uppercase">place</span>
+          <span class="tag is-light is-uppercase">bangkok</span>
+          <span class="tag is-light is-uppercase">chinatown</span>
       </div>
-      <div class="post">
-        <h6 class="subtitle is-7 is-uppercase"><time>Jul 18, 2022</time></h6>
 
-        <div class="tags">
-            <span class="tag is-light is-uppercase">place</span>
-            <span class="tag is-light is-uppercase">bangkok</span>
-            <span class="tag is-light is-uppercase">chinatown</span>
-        </div>
-
-        <h2><a href="/yaowarat-road-chinatown-bangkok.html">Yaowarat Road, Chinatown</a></h2>
-        <p><div class="content-image">
+      <h2><a href="/yaowarat-road-chinatown-bangkok.html">Yaowarat Road, Chinatown</a></h2>
+      <p><div class="content-image">
   <p><img src="/yaowarat-road-chinatown-bangkok/yaowarat-road-chinatown-bangkok-4656a1b7.jpg" alt="Yaowarat Road, Chinatown - Bangkok" /></p>
 </div>
 
@@ -148,13 +111,281 @@ restart_db:
   </p>
 </div>
 </p>
+      <p class="has-text-centered">
+        <a href="/yaowarat-road-chinatown-bangkok.html" class="button is-centered">Read more</a>
+      </p>
 
-          <p class="has-text-centered mt-6">
-            <a href="https://www.instagram.com/p/CerFTCwhHLj/" target="_blank">
-              <img src="/images/icons/instagram-2f674249.svg" width="30px" alt="" />
-            </a>
-          </p>
+        <p class="has-text-centered mt-6">
+          <a href="https://www.instagram.com/p/CerFTCwhHLj/" target="_blank">
+            <img src="/images/icons/instagram-2f674249.svg" width="30px" alt="" />
+          </a>
+        </p>
+      <hr />
+    </div>
+    <div class="post">
+      <h6 class="subtitle is-7 is-uppercase"><time>Sep 28, 2021</time></h6>
+
+      <div class="tags">
+          <span class="tag is-light is-uppercase">development</span>
+          <span class="tag is-light is-uppercase">react native</span>
+          <span class="tag is-light is-uppercase">expo</span>
+          <span class="tag is-light is-uppercase">web3</span>
+          <span class="tag is-light is-uppercase">solana</span>
       </div>
+
+      <h2><a href="/solana-wallet-integrate-spl-tokens.html">Integrate SPL Tokens - Building a Solana Open Source Cross-Platform Wallet App</a></h2>
+      <p><div class="content-image">
+  <p><img src="/solana-wallet-integrate-spl-tokens/spl-token-91ca2d1f.png" alt=""></p>
+</div>
+
+<p>Now that the <a href="https://github.com/jferrer/expo-solana-wallet">Wallet App</a> has implemented the basic operations to:</p>
+
+<ul>
+  <li>Create Accounts</li>
+  <li>Get Balances</li>
+</ul></p>
+      <p class="has-text-centered">
+        <a href="/solana-wallet-integrate-spl-tokens.html" class="button is-centered">Read more</a>
+      </p>
+
+      <hr />
+    </div>
+    <div class="post">
+      <h6 class="subtitle is-7 is-uppercase"><time>Sep 23, 2021</time></h6>
+
+      <div class="tags">
+          <span class="tag is-light is-uppercase">development</span>
+          <span class="tag is-light is-uppercase">web3</span>
+          <span class="tag is-light is-uppercase">solana</span>
+          <span class="tag is-light is-uppercase">blockchain</span>
+      </div>
+
+      <h2><a href="/my-first-impressions-after-one-month-learning-and-building-with-web3-and-solana.html">My first impressions after one month learning and building with Web3 and Solana</a></h2>
+      <p><div class="content-image">
+  <p><img src="/my-first-impressions-after-one-month-learning-and-building-with-web3-and-solana/blockchain-0b1b92de.jpg" alt=""></p>
+</div>
+
+<p>I’ve been learning and building with <strong>Web3</strong> for almost one month and I have to say that it’s mind...</p></p>
+      <p class="has-text-centered">
+        <a href="/my-first-impressions-after-one-month-learning-and-building-with-web3-and-solana.html" class="button is-centered">Read more</a>
+      </p>
+
+      <hr />
+    </div>
+    <div class="post">
+      <h6 class="subtitle is-7 is-uppercase"><time>Sep 21, 2021</time></h6>
+
+      <div class="tags">
+          <span class="tag is-light is-uppercase">development</span>
+          <span class="tag is-light is-uppercase">react native</span>
+          <span class="tag is-light is-uppercase">expo</span>
+          <span class="tag is-light is-uppercase">web3</span>
+          <span class="tag is-light is-uppercase">solana</span>
+      </div>
+
+      <h2><a href="/solana-wallet-derivation-path-and-multiple-accounts.html">Derivation Path and Multiple Accounts from same Seed - Building a Solana Open Source Cross-Platform Wallet App</a></h2>
+      <p><div class="content-image">
+  <p><img src="/solana-wallet-derivation-path-and-multiple-accounts/accounts-20bc7101.png" alt=""></p>
+</div>
+
+<p>These days I’ve been reading and learning about how other Wallet Apps generate the accounts...</p></p>
+      <p class="has-text-centered">
+        <a href="/solana-wallet-derivation-path-and-multiple-accounts.html" class="button is-centered">Read more</a>
+      </p>
+
+      <hr />
+    </div>
+    <div class="post">
+      <h6 class="subtitle is-7 is-uppercase"><time>Sep 15, 2021</time></h6>
+
+      <div class="tags">
+          <span class="tag is-light is-uppercase">development</span>
+          <span class="tag is-light is-uppercase">react native</span>
+          <span class="tag is-light is-uppercase">expo</span>
+          <span class="tag is-light is-uppercase">web3</span>
+          <span class="tag is-light is-uppercase">solana</span>
+      </div>
+
+      <h2><a href="/building-a-solana-wallet-cross-platform-app-with-expo-web3-and-react-native.html">Building a Solana Wallet Cross-Platform App with Expo, Web3 & React Native</a></h2>
+      <p><div class="content-image">
+  <p><img src="/building-a-solana-wallet-cross-platform-app-with-expo-web3-and-react-native/solana-wallet-app-d4a8563f.jpg" alt=""></p>
+</div>
+
+<p>As a developer I’ve been interested in the Blockchain space for long time and although a few...</p></p>
+      <p class="has-text-centered">
+        <a href="/building-a-solana-wallet-cross-platform-app-with-expo-web3-and-react-native.html" class="button is-centered">Read more</a>
+      </p>
+
+      <hr />
+    </div>
+    <div class="post">
+      <h6 class="subtitle is-7 is-uppercase"><time>Aug  8, 2021</time></h6>
+
+      <div class="tags">
+          <span class="tag is-light is-uppercase">personal</span>
+      </div>
+
+      <h2><a href="/from-the-busy-bangkok-to-the-quiet-ko-samui.html">From the busy Bangkok to the quiet Ko Samui</a></h2>
+      <p><div class="content-image">
+  <p><img src="/from-the-busy-bangkok-to-the-quiet-ko-samui/ko-samui-5be1ae4d.jpg" alt=""></p>
+</div>
+
+<p>After one year and half living in Bangkok and because the current situation was getting worse...</p></p>
+      <p class="has-text-centered">
+        <a href="/from-the-busy-bangkok-to-the-quiet-ko-samui.html" class="button is-centered">Read more</a>
+      </p>
+
+        <p class="has-text-centered mt-6">
+          <a href="https://www.instagram.com/p/CQ3DXpqBBRR/" target="_blank">
+            <img src="/images/icons/instagram-2f674249.svg" width="30px" alt="" />
+          </a>
+        </p>
+      <hr />
+    </div>
+    <div class="post">
+      <h6 class="subtitle is-7 is-uppercase"><time>May 19, 2021</time></h6>
+
+      <div class="tags">
+          <span class="tag is-light is-uppercase">development</span>
+          <span class="tag is-light is-uppercase">react native</span>
+          <span class="tag is-light is-uppercase">expo</span>
+          <span class="tag is-light is-uppercase">docker</span>
+      </div>
+
+      <h2><a href="/boilerplate-to-start-building-cross-platform-apps-with-expo-and-react-native.html">Boilerplate to start building Cross-Platform Apps with Expo and React Native</a></h2>
+      <p><div class="content-image">
+  <p><img src="/create-cross-platform-apps-with-react-native-and-expo/expo-9032583c.jpg" alt=""></p>
+</div>
+
+<p><a href="https://expo.io/">Expo</a> and <a href="http://reactnative.dev/">React Native</a> is the perfect combination to build Cross-Platform Apps.</p>
+
+<p>When I started...</p></p>
+      <p class="has-text-centered">
+        <a href="/boilerplate-to-start-building-cross-platform-apps-with-expo-and-react-native.html" class="button is-centered">Read more</a>
+      </p>
+
+      <hr />
+    </div>
+    <div class="post">
+      <h6 class="subtitle is-7 is-uppercase"><time>May  5, 2021</time></h6>
+
+      <div class="tags">
+          <span class="tag is-light is-uppercase">development</span>
+          <span class="tag is-light is-uppercase">api</span>
+          <span class="tag is-light is-uppercase">rails</span>
+          <span class="tag is-light is-uppercase">postgres</span>
+          <span class="tag is-light is-uppercase">docker</span>
+          <span class="tag is-light is-uppercase">docker-compose</span>
+      </div>
+
+      <h2><a href="/create-a-rails-api-postgres-with-docker-from-scratch-without-having-to-even-install-ruby-locally.html">Create a Rails API + Postgres with Docker from scratch without having to even install Ruby locally</a></h2>
+      <p><div class="content-image">
+  <p><img src="/create-a-rails-api-postgres-with-docker-from-scratch-without-having-to-even-install-ruby-locally/ruby-on-rails-docker-564aca1b.jpg" alt=""></p>
+</div>
+
+<p>Every time that I have to start a new project (Ruby, Rails, JS…) I always start <a href="https://www.docker.com/">Docker</a> first...</p></p>
+      <p class="has-text-centered">
+        <a href="/create-a-rails-api-postgres-with-docker-from-scratch-without-having-to-even-install-ruby-locally.html" class="button is-centered">Read more</a>
+      </p>
+
+      <hr />
+    </div>
+    <div class="post">
+      <h6 class="subtitle is-7 is-uppercase"><time>Feb  2, 2021</time></h6>
+
+      <div class="tags">
+          <span class="tag is-light is-uppercase">development</span>
+          <span class="tag is-light is-uppercase">javascript</span>
+          <span class="tag is-light is-uppercase">es6</span>
+          <span class="tag is-light is-uppercase">react</span>
+          <span class="tag is-light is-uppercase">react native</span>
+      </div>
+
+      <h2><a href="/es6-for-react-developers.html">ES6 for React Developers</a></h2>
+      <p><p>When I started my travel with <a href="/create-cross-platform-apps-with-react-native-and-expo.html">React Native</a> I noticed that my skills in <strong>Javascript</strong> were totally obsoleted...</p></p>
+      <p class="has-text-centered">
+        <a href="/es6-for-react-developers.html" class="button is-centered">Read more</a>
+      </p>
+
+      <hr />
+    </div>
+    <div class="post">
+      <h6 class="subtitle is-7 is-uppercase"><time>Jan  3, 2021</time></h6>
+
+      <div class="tags">
+          <span class="tag is-light is-uppercase">development</span>
+          <span class="tag is-light is-uppercase">react native</span>
+          <span class="tag is-light is-uppercase">expo</span>
+          <span class="tag is-light is-uppercase">docker</span>
+      </div>
+
+      <h2><a href="/create-cross-platform-apps-with-react-native-and-expo.html">Create Cross-Platform Apps With React Native and Expo</a></h2>
+      <p><div class="content-image">
+  <p><img src="/create-cross-platform-apps-with-react-native-and-expo/expo-9032583c.jpg" alt=""></p>
+</div>
+
+<p>I’ve spent most of my career working as <strong>Full Stack Developer</strong>, mainly building products in <strong>Ruby...</strong></p></p>
+      <p class="has-text-centered">
+        <a href="/create-cross-platform-apps-with-react-native-and-expo.html" class="button is-centered">Read more</a>
+      </p>
+
+        <p class="has-text-centered mt-6">
+          <a href="https://www.instagram.com/p/CKDV-IHBFk4/" target="_blank">
+            <img src="/images/icons/instagram-2f674249.svg" width="30px" alt="" />
+          </a>
+        </p>
+      <hr />
+    </div>
+    <div class="post">
+      <h6 class="subtitle is-7 is-uppercase"><time>Jan  2, 2021</time></h6>
+
+      <div class="tags">
+          <span class="tag is-light is-uppercase">bangkok</span>
+          <span class="tag is-light is-uppercase">place</span>
+          <span class="tag is-light is-uppercase">rooftop</span>
+      </div>
+
+      <h2><a href="/lumpini-park-from-so-sofitel-rooftop-bar.html">Lumpini Park from SO Sofitel Rooftop Bar</a></h2>
+      <p><div class="content-image">
+  <p><img src="/lumpini-park-from-so-sofitel-rooftop-bar/lumpini-park-from-so-sofitel-rooftop-bar-c3eb23c9.jpg" alt="Lumpini Park from SO Sofitel Rooftop Bar"></p>
+</div>
+
+<p>Lumpini Park is the largest green space in downtown Bangkok and it is best seen from Park Society...</p></p>
+      <p class="has-text-centered">
+        <a href="/lumpini-park-from-so-sofitel-rooftop-bar.html" class="button is-centered">Read more</a>
+      </p>
+
+        <p class="has-text-centered mt-6">
+          <a href="https://www.instagram.com/p/CKA35uZBqFG/" target="_blank">
+            <img src="/images/icons/instagram-2f674249.svg" width="30px" alt="" />
+          </a>
+        </p>
+      <hr />
+    </div>
+    <div class="post">
+      <h6 class="subtitle is-7 is-uppercase"><time>Jan  1, 2021</time></h6>
+
+      <div class="tags">
+          <span class="tag is-light is-uppercase">personal</span>
+      </div>
+
+      <h2><a href="/new-year-new-life-new-blog.html">New year, new life, new blog</a></h2>
+      <p><div class="content-image">
+  <p><img src="/posts/bye-2020/bkk-1-38034248.jpg" alt=""></p>
+</div>
+
+<p>At the beginning of 2020 I moved to Bangkok (Thailand) to join <a href="">Omise</a> as API Software Engineer...</p></p>
+      <p class="has-text-centered">
+        <a href="/new-year-new-life-new-blog.html" class="button is-centered">Read more</a>
+      </p>
+
+        <p class="has-text-centered mt-6">
+          <a href="https://www.instagram.com/p/CJ8Sq6vhEmG/" target="_blank">
+            <img src="/images/icons/instagram-2f674249.svg" width="30px" alt="" />
+          </a>
+        </p>
+      <hr />
+    </div>
 
 <!--
   <nav class="pagination is-centered" role="navigation" aria-label="pagination">
